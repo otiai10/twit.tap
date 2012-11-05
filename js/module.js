@@ -197,7 +197,7 @@ function getUserLink(user){
 }
 
 window.onscroll = function(){
-    if(window.scrollY > 4000){
+    if(window.scrollY > 4500){
         $("div#social").fadeIn(300);
     }else{
         $("div#social").fadeOut(300);

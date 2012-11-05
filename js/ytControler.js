@@ -1,6 +1,8 @@
 /**
  * ytControler.js
 **/
+var YT_STSTUS_VIDEO_END     = 0;
+var YT_STSTUS_VIDEO_PLAYING = 0;
 
 function setVideoAndLoad(hash,callback){
     if(typeof document.getElementById("player").loadVideoById !== 'undefined'){
@@ -24,7 +26,7 @@ function onYouTubePlayerReady(playerid){
 function statusWatch(newState){
   console.log('index',__index,'newState',newState);
   switch(newState){
-    case 0:
+    case YT_STSTUS_VIDEO_END:
       if(__entry_list.length -1 > __index){
         __index++;
         playByIndex();
