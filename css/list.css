@@ -1,0 +1,125 @@
+@-webkit-keyframes rotate {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to   {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+div#loader {
+    border-top : medium dotted #333;
+    border-right : medium dotted #333;
+    -webkit-border-radius: 18px;
+    width: 18px;
+    height: 18px;
+    margin: 10px auto;
+
+    -webkit-animation-name :             rotate;
+    -webkit-animation-duration:              1s;
+    -webkit-animation-timing-function:   linear;
+    -webkit-animation-iteration-count: infinite;
+}
+
+ul#twitter_results {
+    /* debug  background-color: #dcdcdc; */
+}
+
+li#search>div>#query_input {
+    width: 200px;
+    margin:0 auto;
+    color: #aaa;
+    font-family: monospace;
+    font-size: 16px;
+    background-color: #fefefe;
+    -webkit-border-radius: 5px;
+    -webkit-box-shadow: 0 0 3px #ddd inset;
+}
+
+#megane {
+    -webkit-opacity: 0.1;
+}
+#megane:hover, #megane:focus {
+    -webkit-opacity: 0.7;
+    cursor: pointer;
+}
+
+li.entry {
+    min-height:90px;
+    /* width: 100%; */
+    width: 590px;
+    border-top: thin dotted #dcdcdc;
+}
+
+li.entry {
+    height:50px;
+}
+li.entry:hover {
+    background-color: #f3f3f3;
+}
+li.entry:hover>div.playing_status {
+    -webkit-opacity: 0.7;
+}
+
+div.icon_box {
+    width: 52px;
+    padding: 2px;
+    /* dbg  background-color: #fff; */
+    display: -webkit-box;
+    -webkit-box-align: end;
+}
+div.icon_box>div>img {
+    -webkit-border-radius: 5px;
+    -webkit-box-shadow: 1px 1px 4px #ccc;
+}
+
+div.content_box {
+    /* -webkit-box-flex: 1; */
+    /* dbg background-color: #ccf; */
+    width: 480px;
+}
+div.tw_text {
+    height: 65px;
+}
+div.tw_text>p {
+    font-size: 14px;
+    color: #333;
+    padding: 5px;
+}
+div.tw_meta {
+    height: 13px;
+}
+
+div.playing_status {
+    width: 54px;
+    /* background-color: #dfdfdf; */
+    /* border: thin solid #aaa; */
+    -webkit-border-radius: 10px;
+    display: -webkit-box;
+    -webkit-box-align: center;
+    -webkit-opacity: 0.1;
+}
+div.playing_status>div {
+    /* vertical-align: bottom; */
+    margin: auto auto;
+    /* padding: 0; */
+    -webkit-box-sizing: border-box;
+}
+
+div.playing_status.active {
+    -webkit-opacity: 1;
+    /*
+    -webkit-box-shadow: 0 0 8px #888,
+                       0 0 16px #888 inset;
+    */
+}
+div.playing_status.active:after {
+    content: url('../src/headphone.png');
+}
+div.playing_status.active>div:hover:before {
+    content: 'たぶんこれ.ちがったらごめん';
+    font-size: 3px;
+}
+
+div.playing_status.active>div>img {
+}
