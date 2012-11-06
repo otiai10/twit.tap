@@ -53,6 +53,37 @@ div#titlewrapper>h1 {
 ul.default {
     list-style: none;
 }
+ul.horizon>li {
+    float: left;
+}
+ul#control {
+    padding-left: 0;
+}
+/**
+li#up {
+    margin-bottom: 80px;
+}
+li#up>img {
+    -webkit-transform: rotate(90deg);
+}
+li#down>img {
+    -webkit-transform: rotate(-90deg);
+}
+**/
+div#controlPannel {
+    height: 90px;
+    width: 480px;
+    margin: 0;
+}
+div#controlPannel>ul>li>img {
+    width: 30px;
+}
+li#up {
+    float: left;
+}
+li#down {
+    float: right;
+}
 
 .boxy {
     display: -webkit-box;

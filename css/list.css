@@ -116,10 +116,12 @@ div.playing_status.active {
 div.playing_status.active:after {
     content: url('../src/headphone.png');
 }
+/**
 div.playing_status.active>div:hover:before {
     content: 'たぶんこれ.ちがったらごめん';
     font-size: 3px;
 }
+**/
 
 div.playing_status.active>div>img {
 }

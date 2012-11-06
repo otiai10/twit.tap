@@ -23,4 +23,12 @@ $(function(){ // jQuery document.ready
         getTweet(_params);
     });
 
+    $("div#controlPannel>ul>li#up>img").on('click',function(){
+        playPrev();
+    });
+
+    $("div#controlPannel>ul>li#down>img").on('click',function(){
+        playNext();
+    });
+
 }); // END jQuery document.ready

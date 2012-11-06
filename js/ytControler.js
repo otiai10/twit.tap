@@ -16,6 +16,7 @@ function playByIndex(){
         $('div.playing_status').removeClass('active');
         $('#index' + __index).addClass('active');
     });
+    scrolling();
 }
 
 function onYouTubePlayerReady(playerid){
@@ -30,12 +31,9 @@ function statusWatch(newState){
       if(__entry_list.length -1 > __index){
         __index++;
         playByIndex();
-        destination = __index - 1;
-        pageScroll('index' + destination);
       }else{
         __index = 0;
         playByIndex();
-        pageScroll('index0');
       }
       break;
     case 1:
@@ -44,4 +42,31 @@ function statusWatch(newState){
       break;
     default:
   }
+}
+
+function playPrev(){
+    if(__index == 0){
+        __index = __entry_list.length;
+    }else{
+        __index = __index - 1;
+    }
+    playByIndex();
+}
+
+function playNext(){
+    alert('playNext');
+    if(__index == __entry_list.length){
+        __index = 0;
+    }else{
+        __index = __index + 1;
+    }
+    playByIndex();
+}
+
+function scrolling(){
+    destination = __index -1;
+    if(__index == 0){
+        destination = 0;
+    }
+    pageScroll('index' + destination);
 }
