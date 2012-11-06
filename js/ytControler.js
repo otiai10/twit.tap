@@ -54,8 +54,7 @@ function playPrev(){
 }
 
 function playNext(){
-    alert('playNext');
-    if(__index == __entry_list.length){
+    if(__index == (__entry_list.length -1)){
         __index = 0;
     }else{
         __index = __index + 1;
@@ -65,8 +64,5 @@ function playNext(){
 
 function scrolling(){
     destination = __index -1;
-    if(__index == 0){
-        destination = 0;
-    }
     pageScroll('index' + destination);
 }

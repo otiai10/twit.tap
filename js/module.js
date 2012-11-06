@@ -50,7 +50,7 @@ function getTweet(_params){
             },(60*1000));
 **/
         }else{
-            alert('twitter api error');
+            alert("Twitter API returns Error.\nSorry, please reload");
         }
     },
     error   :   function(err){

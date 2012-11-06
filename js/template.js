@@ -65,7 +65,7 @@ function getLoadMoreArea(data){
 
 function getSearchTemplate(query){
     var template = ''
-+'            <li class="entry fixed_list" id="search">'
++'            <li class="entry fixed_list search" id="index-1">'
 +'              <div>'
 +'                <input id="query_input" placeholder="What music do you like?" value="{%query%}">'
 +'                <button id="megane"><img tabindex="0" src="src/search.png"></button>'

@@ -25,7 +25,7 @@ ul#twitter_results {
     /* debug  background-color: #dcdcdc; */
 }
 
-li#search>div>#query_input {
+li.search>div>#query_input {
     width: 200px;
     margin:0 auto;
     color: #aaa;
