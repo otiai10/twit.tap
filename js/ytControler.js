@@ -15,6 +15,7 @@ function playByIndex(){
     setVideoAndLoad(__entry_list[__index].youtube_hash,function(){
         $('div.playing_status').removeClass('active');
         $('#index' + __index).addClass('active');
+        showNowPlaying();
     });
     scrolling();
 }
@@ -65,4 +66,12 @@ function playNext(){
 function scrolling(){
     destination = __index -1;
     pageScroll('index' + destination);
+}
+
+function showNowPlaying(){
+    $("div#music_title>span")
+    .fadeOut(300,function(){
+        $(this).html(__entry_list[__index].youtube_title)
+        .hide().fadeIn(300);
+    });
 }

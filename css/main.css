@@ -2,6 +2,7 @@ body, #wrapper {
     padding: 0;
     margin:  0;
     clear: both;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 #header {
@@ -56,9 +57,11 @@ ul.default {
 ul.horizon>li {
     float: left;
 }
+/**
 ul#control {
     padding-left: 0;
 }
+**/
 /**
 li#up {
     margin-bottom: 80px;
@@ -75,9 +78,33 @@ div#controlPannel {
     width: 480px;
     margin: 0;
 }
+/**
 div#controlPannel>ul>li>img {
     width: 30px;
 }
+**/
+div#controlPannel>div>img {
+    width: 30px;
+    cursor: pointer;
+}
+div#controlPannel>div#music_title {
+    width: 396px;
+    /* debug */
+    /* -webkit-box-sizing: box-border; */
+    padding:1px 12px;
+}
+div#controlPannel>div#music_title>span {
+    color: #333;
+    font-size: 12px;
+}
+
+button#korejanai {
+    cursor:pointer;
+}
+button#korejanai:hover {
+    color: red;
+}
+
 li#up {
     float: left;
 }

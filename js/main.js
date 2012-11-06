@@ -23,12 +23,16 @@ $(function(){ // jQuery document.ready
         getTweet(_params);
     });
 
-    $("div#controlPannel>ul>li#up>img").on('click',function(){
+    $("div#controlPannel>div#up>img").on('click',function(){
         playPrev();
     });
 
-    $("div#controlPannel>ul>li#down>img").on('click',function(){
+    $("div#controlPannel>div#down>img").on('click',function(){
         playNext();
+    });
+
+    $("button#korejanai").on('click',function(){
+        openTweet();
     });
 
 }); // END jQuery document.ready

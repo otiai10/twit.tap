@@ -202,4 +202,17 @@ window.onscroll = function(){
     }else{
         $("div#social").fadeOut(300);
     }
-};
+}
+
+function openTweet(e){
+    option = "width=720,height=280"; //,left=" + e.clientX + ",top=" + e.clientY;
+    text = getTweetText();
+    window.open('https://twitter.com/intent/tweet?lang=en&text=' + text ,"",option);
+}
+
+function getTweetText(){
+    console.log(__entry_list[__index]);
+    youtube_query = __entry_list[__index].youtube_query;
+    text = 'ｺﾚｼﾞｬﾅｲ!!query> ' + youtube_query + ' http://otiai10.com/twit.tap/';
+    return text;
+}
