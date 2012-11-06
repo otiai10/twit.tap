@@ -6,11 +6,20 @@
         -webkit-transform: rotate(360deg);
     }
 }
+@-moz-keyframes rotate {
+    from {
+        -moz-transform: rotate(0deg);
+    }
+    to   {
+        -moz-transform: rotate(360deg);
+    }
+}
 
 div#loader {
     border-top : medium dotted #333;
     border-right : medium dotted #333;
     -webkit-border-radius: 18px;
+    -moz-border-radius: 18px;
     width: 18px;
     height: 18px;
     margin: 10px auto;
@@ -19,6 +28,12 @@ div#loader {
     -webkit-animation-duration:              1s;
     -webkit-animation-timing-function:   linear;
     -webkit-animation-iteration-count: infinite;
+
+    -moz-animation-name :             rotate;
+    -moz-animation-duration:              1s;
+    -moz-animation-timing-function:   linear;
+    -moz-animation-iteration-count: infinite;
+
 }
 
 ul#twitter_results {
@@ -33,14 +48,18 @@ li.search>div>#query_input {
     font-size: 16px;
     background-color: #fefefe;
     -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
     -webkit-box-shadow: 0 0 3px #ddd inset;
+    -moz-box-shadow: 0 0 3px #ddd inset;
 }
 
 #megane {
     -webkit-opacity: 0.1;
+    -moz-opacity: 0.1;
 }
 #megane:hover, #megane:focus {
     -webkit-opacity: 0.7;
+    -moz-opacity: 0.7;
     cursor: pointer;
 }
 
@@ -59,6 +78,7 @@ li.entry:hover {
 }
 li.entry:hover>div.playing_status {
     -webkit-opacity: 0.7;
+    -moz-opacity: 0.7;
 }
 
 div.icon_box {
@@ -66,11 +86,15 @@ div.icon_box {
     padding: 2px;
     /* dbg  background-color: #fff; */
     display: -webkit-box;
+    display: -moz-box;
     -webkit-box-align: end;
+    -moz-box-align: end;
 }
 div.icon_box>div>img {
     -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
     -webkit-box-shadow: 1px 1px 4px #ccc;
+    -moz-box-shadow: 1px 1px 4px #ccc;
 }
 
 div.content_box {
@@ -95,19 +119,25 @@ div.playing_status {
     /* background-color: #dfdfdf; */
     /* border: thin solid #aaa; */
     -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
     display: -webkit-box;
+    display: -moz-box;
     -webkit-box-align: center;
+    -moz-box-align: center;
     -webkit-opacity: 0.1;
+    -moz-opacity: 0.1;
 }
 div.playing_status>div {
     /* vertical-align: bottom; */
     margin: auto auto;
     /* padding: 0; */
     -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
 }
 
 div.playing_status.active {
     -webkit-opacity: 1;
+    -moz-opacity: 1;
     /*
     -webkit-box-shadow: 0 0 8px #888,
                        0 0 16px #888 inset;

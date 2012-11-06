@@ -60,6 +60,7 @@ function getTweet(_params){
 }
 
 function init(){
+  checkBrowser();
   $("div#social").hide();
   $("ul#twitter_results").append('<li id="loader_wrapper"><div id="loader"></div></li>').hide().fadeIn(400);
   swfobject.embedSWF(
@@ -197,7 +198,7 @@ function getUserLink(user){
 }
 
 window.onscroll = function(){
-    if(window.scrollY > 4500){
+    if(window.scrollY > 3000){
         $("div#social").fadeIn(300);
     }else{
         $("div#social").fadeOut(300);
@@ -215,4 +216,16 @@ function getTweetText(){
     youtube_query = __entry_list[__index].youtube_query;
     text = 'ｺﾚｼﾞｬﾅｲ!!query> ' + youtube_query + ' http://otiai10.com/twit.tap/';
     return text;
+}
+
+function checkBrowser(){
+    if(navigator.userAgent.indexOf("Chrome") > 0){
+        //alert('Chromeっすね');
+    }else{
+        alert("Chromeじゃないとうごきませんからねっ( ﾟдﾟ )ｸﾜｯ!!");
+        if(confirm("Chromeブラウザのインストールはめっちゃかんたんです\nちょっと見に行く？")){
+            window.location.href = 'http://www.google.com/intl/ja/chrome/browser/';
+        }else{
+        }
+    }
 }
