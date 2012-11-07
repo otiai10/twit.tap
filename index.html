@@ -17,32 +17,55 @@
     <script type="text/javascript" src="js/main.js"></script>
   </head>
   <body>
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/ja_JP/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+    <!-- prepare for share -->
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/ja_JP/all.js#xfbml=1";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+    <!-- /END prepare -->
     <div id="wrapper">
       <div id="header">
         <div id="titlewrapper">
           <h1>twit<img id="in_title" src="src/headphone.png">tap</h1>
         </div>
       </div><!-- /header -->
-<div id="social">
-    <div class="fb-like" data-href="http://otiai10.com/twit.tap/" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="arial"></div>
-    <a href="https://twitter.com/share" class="twitter-share-button" data-lang="ja">ツイート</a>
-    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-</div>
+      <div id="mode_switch">
+        <ul class="default horizon">
+          <li>
+            <img id="gumi"   class="switch" src="src/vocaloids/gumi-b.png">
+          </li>
+          <li>
+            <img id="teto"   class="switch" src="src/vocaloids/teto-b.png">
+          </li>
+          <li>
+            <img id="miku"   class="switch" src="src/vocaloids/miku-b.png">
+          </li>
+          <li>
+            <img id="luka"   class="switch" src="src/vocaloids/luka-b.png">
+          </li>
+          <li>
+            <img id="rinlen" class="switch" src="src/vocaloids/rinlen-b.png">
+          </li>
+        </ul>
+      </div>
+      <!-- mute
+      <div id="social">
+        <div class="fb-like" data-href="http://otiai10.com/twit.tap/" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="arial"></div>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-lang="ja">ツイート</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+      </div>
+      -->
       <div id="main" class="boxy">
         <div id="cont_left">
           <ul id="twitter_results" class="default vertical">
             <li class="entry fixed_list search" id="index-1">
               <div>
-                <input id="query_input" placeholder="What music do you like?" value="初音ミク">
-                <button id="megane"><img tabindex="0" src="src/search.png"></button>
+                <input id="query_input" placeholder="What music do you like?" value="#nowplaying+初音ミク">
+                <!-- button id="megane"><img tabindex="0" src="src/search.png"></button -->
               </div>
             </li>
           </ul>
@@ -64,11 +87,9 @@
           <!-- /control pannel -->
           <!-- meta -->
           <div id="meta_action">
-            ※ #nowplayingタグでつぶやいてんのかき集めるの<br>
-            ※ で、それっぽいyoutube流すの<br>
+            ※ #nowplayingタグでつぶやいてんのかき集めるよ<br>
+            ※ で、それっぽいyoutube流すよヽ(・∀・ )ﾉ<br>
             ※ 自動で順次再生、リストループしてくれるので聞き流せるよ！<br>
-            ※ 明らかにこれじゃない感じだったら押してください(bow)<br>
-            <button id="korejanai">ｺﾚｼﾞｬﾅｲ(´・д・｀)</button>
           </div>
           <!-- /meta -->
         </div>

@@ -242,3 +242,49 @@ function getURLQuery(){
     console.log(decodeURIComponent(query));
     //TODO: GET値を反映させるなら、tweetボタンのURLは「現在のウェブページのURL」では不適
 }
+
+function switchBackgroundImage(vocalo){
+    src = './src/vocaloids/' + vocalo + '.png';
+    $('body').css({
+       backgroundImage : 'url(' + src + ')',
+    });
+    _params.q = '#nowplaying+';
+    switch(vocalo){
+        case 'gumi':
+            _params.q += 'GUMI';
+            break;
+        case 'teto':
+            _params.q += '重音テト';
+            break;
+        case 'miku':
+            _params.q += '初音ミク';
+            break;
+        case 'luka':
+            _params.q += '巡音ルカ';
+            break;
+        case 'rinlen':
+            _params.q += '鏡音リン+OR+#nowplaying+鏡音レン';
+            break;
+        default:
+            _params.q += '初音ミク';
+    }
+    __entry_list = [];
+    __index      =  0;
+    $("ul#twitter_results").html('');
+    $("ul#twitter_results").append(getSearchTemplate(_params.q));
+    $("ul#twitter_results").append('<li id="loader_wrapper"><div id="loader"></div></li>').hide().fadeIn(400);
+    console.log(_params);
+    getTweet(_params);
+}
+
+function switchBlackImage(obj, vocalo){
+    $(obj).attr({
+        'src' : 'src/vocaloids/' + vocalo + '.png',
+    });
+}
+
+function recoverImage(obj, vocalo){
+    $(obj).attr({
+        'src' : 'src/vocaloids/' + vocalo + '-b.png',
+    });
+}

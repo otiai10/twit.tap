@@ -5,6 +5,15 @@ body, #wrapper {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+body {
+    background-image: url('../src/vocaloids/miku.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: 350px 200px;
+    min-height: 1200px;
+    min-width: 5400px;
+}
+
 #header {
     position:fixed;
     background: -webkit-gradient(linear, left top, left bottom,
@@ -37,12 +46,25 @@ body, #wrapper {
                                                            #aaa
                 );
 
-
     width: 100%;
     height: 90px;
     z-index: -1;
     text-align: right;
 }
+
+div#mode_switch {
+    position:fixed;
+    top:5px;
+    left:700px;
+}
+div#mode_switch>ul>li {
+    margin-right: 10px;
+}
+div#mode_switch>ul>li>img.switch {
+    height: 70px;
+    cursor:pointer;
+}
+
 div#social {
     position: fixed;
     top: 10px;
@@ -141,6 +163,10 @@ div#cont_right {
     position:fixed;
     left: 700px;
     top:    90px;
+}
+
+div#meta_action {
+    margin-top:80px;
 }
 
 object#player {

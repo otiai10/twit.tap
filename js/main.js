@@ -39,4 +39,20 @@ $(function(){ // jQuery document.ready
         alert('未実装☆（ゝω・）v');
     });
 
+    $("img.switch").on('click',function(){
+        switchBackgroundImage($(this).attr('id'));
+    });
+
+    $("img.switch").hover(
+        function(){
+            switchBlackImage(this,$(this).attr('id'));
+        },
+        function(){
+            recoverImage(this,$(this).attr('id'));
+        }
+    );
+
+    $("div#music_title").on('click',function(){
+        pageScroll('index' + (__index - 1) );
+    });
 }); // END jQuery document.ready
