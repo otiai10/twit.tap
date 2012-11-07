@@ -63,7 +63,7 @@ function init(){
   getURLQuery();
   checkBrowser();
   $("div#social").hide();
-  $("ul#twitter_results").append('<li id="loader_wrapper"><div id="loader"></div></li>').hide().fadeIn(400);
+  showLaoding();
   swfobject.embedSWF(
     "http://www.youtube.com/v/MGt25mv4-2Q?enablejsapi=1&autoplay=1&playerapiid=player",
     "video","480","320","8",null,null,{allowScriptAccess:"always"},{id:"player"    }
@@ -272,8 +272,8 @@ function switchBackgroundImage(vocalo){
     __index      =  0;
     $("ul#twitter_results").html('');
     $("ul#twitter_results").append(getSearchTemplate(_params.q));
-    $("ul#twitter_results").append('<li id="loader_wrapper"><div id="loader"></div></li>').hide().fadeIn(400);
-    console.log(_params);
+    pageScroll('index-1');
+    showLaoding();
     getTweet(_params);
 }
 
@@ -287,4 +287,8 @@ function recoverImage(obj, vocalo){
     $(obj).attr({
         'src' : 'src/vocaloids/' + vocalo + '-b.png',
     });
+}
+
+function showLaoding(){
+    $("ul#twitter_results").append('<li id="loader_wrapper" class="entry" ><div id="loader"><img id="guruguru" src="src/loading.png"><img id="hachunemiku" src="src/hachu.gif"></div></li>').hide().fadeIn(400);
 }

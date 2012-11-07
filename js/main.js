@@ -11,6 +11,7 @@ $(function(){ // jQuery document.ready
         playByIndex();
     });
 
+/** 眼鏡機能は全廃止
     $("#megane").on('click',function(e){
         q = $("#query_input").val();
         _params.q = '#nowplaying+' + q;
@@ -22,6 +23,7 @@ $(function(){ // jQuery document.ready
         console.log(_params);
         getTweet(_params);
     });
+**/
 
     $("div#controlPannel>div#up>img").on('click',function(){
         playPrev();

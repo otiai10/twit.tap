@@ -15,14 +15,26 @@
     }
 }
 
-div#loader {
+li#loader_wrapper {
+}
+li#loader_wrapper>div#loader {
+    width: 100px;
+    margin: 50px auto;
+}
+
+div#loader>img#guruguru {
+/** border で解決しないようにする
     border-top : medium dotted #333;
     border-right : medium dotted #333;
     -webkit-border-radius: 18px;
     -moz-border-radius: 18px;
-    width: 18px;
-    height: 18px;
-    margin: 10px auto;
+**/
+/* debug */
+/*
+    width: 100px;
+    height: 100px;
+*/
+    /* margin: 10px auto; */
 
     -webkit-animation-name :             rotate;
     -webkit-animation-duration:              1s;
@@ -34,6 +46,9 @@ div#loader {
     -moz-animation-timing-function:   linear;
     -moz-animation-iteration-count: infinite;
 
+}
+div#loader>img#hachunemiku {
+    width: 36px;
 }
 
 ul#twitter_results {
@@ -74,10 +89,6 @@ li.entry {
     width: 590px;
     border-top: thin dotted #dcdcdc;
     /* background-color: rgba(250,250,250,0.7); */
-    text-shadow: 0 0 10px #fff;
-}
-
-li.entry {
     height:50px;
 }
 li.entry:hover {
@@ -117,6 +128,7 @@ div.content_box {
 }
 div.tw_text {
     height: 65px;
+    text-shadow: 0 1px 0 #eee;
 }
 div.tw_text>p {
     font-size: 14px;
