@@ -35,4 +35,8 @@ $(function(){ // jQuery document.ready
         openTweet();
     });
 
+    $("li#load_more>a#get_more").live('click',function(){
+        alert('未実装☆（ゝω・）v');
+    });
+
 }); // END jQuery document.ready

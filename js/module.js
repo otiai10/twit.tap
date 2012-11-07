@@ -60,6 +60,7 @@ function getTweet(_params){
 }
 
 function init(){
+  getURLQuery();
   checkBrowser();
   $("div#social").hide();
   $("ul#twitter_results").append('<li id="loader_wrapper"><div id="loader"></div></li>').hide().fadeIn(400);
@@ -93,6 +94,7 @@ function searchYoutube(entry, key_in_buffer, end_flag){
                 __buffer_twitter[key_in_buffer].youtube_title = res.title.$t;
                 __entry_list.push(__buffer_twitter[key_in_buffer]);
 
+// TODO: showResultにscinceを渡して、getLoadMoreAreaに渡して、load_moreに付加する
                 if(end_flag == true){
                     showResult();
                 }
@@ -121,6 +123,7 @@ function showResult(){
     $("li#loader_wrapper").fadeOut(1000,function(){
         // drawList
         drawList(__entry_list);
+        $('ul#twitter_results').append(getLoadMoreArea({}));
     });
 }
 
@@ -144,7 +147,6 @@ function drawList(list){
         }
         $(li).append(getListContent(params));
     }
-    $('ul#twitter_results').append(getLoadMoreArea({}));
     __index = 0; // index is global always
     playByIndex();
 }
@@ -228,4 +230,15 @@ function checkBrowser(){
         }else{
         }
     }
+}
+
+function getURLQuery(){
+    query = window.location.search.substring(1);
+/**
+    if(query.match(/^q=/)){
+        console.log(decodeURIComponent(query.replace(/^q=/,'')));
+    }
+**/
+    console.log(decodeURIComponent(query));
+    //TODO: GET値を反映させるなら、tweetボタンのURLは「現在のウェブページのURL」では不適
 }

@@ -63,6 +63,11 @@ li.search>div>#query_input {
     cursor: pointer;
 }
 
+li#load_more {
+    text-align: center;
+    padding-top: 20px;
+}
+
 li.entry {
     min-height:90px;
     /* width: 100%; */

@@ -58,7 +58,7 @@ function getQueryDisplay(data){
 
 function getLoadMoreArea(data){
     var template = ''
-        + '<li class="entry results">load more</li>';
+        + '<li class="entry results" id="load_more"><a href="#" id="get_more">load more</a></li>';
 
     return template;
 }
