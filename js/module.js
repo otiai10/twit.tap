@@ -7,7 +7,7 @@ var _params = {
   page  :             1,
   q     : '#nowplaying',
   lang  :          'ja',
-  rpp   :         '100',
+  rpp   :         '200',
 };
 
 var _youtube_url = 'http://gdata.youtube.com/feeds/api/videos';
@@ -88,7 +88,7 @@ function searchYoutube(entry, key_in_buffer, end_flag){
         for(i=0; i<response.feed.entry.length; i++){
 
             res = response.feed.entry[i];
-            if(res.category[1].term === 'Music'){
+            if(res.category[1].term === 'Music' && res.media$group.yt$duration.seconds < 600){
                 youtube_hash = getHash(res.id.$t);
                 __buffer_twitter[key_in_buffer].youtube_hash  = youtube_hash;
                 __buffer_twitter[key_in_buffer].youtube_title = res.title.$t;
@@ -106,7 +106,7 @@ function searchYoutube(entry, key_in_buffer, end_flag){
             }
         }
       }else{
-        //console.log('NOT FOUND ON YOUTUBE');
+        console.log('NOT FOUND ON YOUTUBE');
         if(end_flag == true){
             showResult();
         }
@@ -120,6 +120,7 @@ function searchYoutube(entry, key_in_buffer, end_flag){
 
 function showResult(){
     // remove loader
+    __entry_list = filterEntryByKeywords(__entry_list);
     $("li#loader_wrapper").fadeOut(1000,function(){
         // drawList
         drawList(__entry_list);
@@ -294,8 +295,20 @@ function showLaoding(){
 }
 
 function shareThisVideo(){
-    console.log(__entry_list[__index]);
     text = __entry_list[__index].youtube_title + ' ' + 'http://youtu.be/' + __entry_list[__index].youtube_hash;
     option = "width=720,height=280";
     window.open('https://twitter.com/intent/tweet?lang=en&hashtags=nowplaying&text=' + text ,"",option);
 }
+
+function filterEntryByKeywords(list){
+    purified_list = [];
+    for(var i in list){
+        if(list[i].youtube_title.match(/初音|ミク|Hatsune|Miku|巡音|ルカ|Megurine|Luka|重音|テト|Kasane|Teto|鏡音|リン|レン|Kagamine|Rin|Len|グミ|GUMI|Meguppoid|Vocaloid/i)){
+            purified_list.push(list[i]);
+        }else{
+            continue; // キーワードが入ってないので除外
+        }
+    }
+    return purified_list;
+}
+
