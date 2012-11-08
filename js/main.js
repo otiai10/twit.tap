@@ -57,4 +57,8 @@ $(function(){ // jQuery document.ready
     $("div#music_title").on('click',function(){
         pageScroll('index' + (__index - 1) );
     });
+
+    $("img#twitter_share").live('click',function(){
+        shareThisVideo();
+    });
 }); // END jQuery document.ready

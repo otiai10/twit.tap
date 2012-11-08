@@ -82,9 +82,14 @@ div#titlewrapper {
     left : 1050px;
     top  : 8px;
 }
-
+div#titlewrapper>pre {
+    margin-top: 10px;
+    margin-bottom: 0;
+    font-size: 8px;
+}
 div#titlewrapper>h1 {
     text-shadow: 0 -1px 0 #fff;
+    margin-top: 0;
 }
 
 ul.default {
@@ -132,6 +137,14 @@ div#controlPannel>div#music_title {
 div#controlPannel>div#music_title>span {
     color: #333;
     font-size: 12px;
+}
+div#controlPannel>div#music_title>span>img#twitter_share {
+    height: 16px;
+    -webkit-opacity: 0.5;
+}
+div#controlPannel>div#music_title>span>img#twitter_share:hover {
+    -webkit-opacity: 1;
+    cursor:pointer;
 }
 
 button#korejanai {

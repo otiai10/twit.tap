@@ -71,7 +71,7 @@ function scrolling(){
 function showNowPlaying(){
     $("div#music_title>span")
     .fadeOut(300,function(){
-        $(this).html(__entry_list[__index].youtube_title)
+        $(this).html(__entry_list[__index].youtube_title + '   <img id="twitter_share" src="src/twitter-t.png">')
         .hide().fadeIn(300);
     });
 }

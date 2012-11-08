@@ -292,3 +292,11 @@ function recoverImage(obj, vocalo){
 function showLaoding(){
     $("ul#twitter_results").append('<li id="loader_wrapper" class="entry" ><div id="loader"><img id="guruguru" src="src/loading.png"><img id="hachunemiku" src="src/hachu.gif"></div></li>').hide().fadeIn(400);
 }
+
+function shareThisVideo(){
+    alert(__entry_list[__index].youtube_title);
+    console.log(__entry_list[__index]);
+    text = '#nowplaying ' + __entry_list[__index].youtube_title + ' ' + 'http://youtu.be/' + __entry_list[__index].youtube_hash;
+    option = "width=720,height=280";
+    window.open('https://twitter.com/intent/tweet?lang=en&text=' + text ,"",option);
+}
