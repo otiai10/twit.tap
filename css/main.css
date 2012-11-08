@@ -91,6 +91,10 @@ div#titlewrapper>h1 {
     text-shadow: 0 -1px 0 #fff;
     margin-top: 0;
 }
+div#titlewrapper>h1>a {
+    text-decoration: none;
+    color: #000;
+}
 
 ul.default {
     list-style: none;
@@ -181,6 +185,12 @@ div#cont_right {
 div#meta_action {
     margin-top:80px;
 }
+div#meta_action>a {
+    -webkit-opacity: 0.2;
+}
+div#meta_action>a:hover {
+    -webkit-opacity: 1;
+}
 
 object#player {
     -webkit-box-shadow: 0 0 30px #ccc;
@@ -200,8 +210,8 @@ object#player {
 }
 
 .tw_link {
-    font-size: 12px;
-    color: #ccc;
+    font-size: 14px;
+    color: #aaa;
     text-shadow: 0 0 1px #eee;
     text-decoration: none;
 }

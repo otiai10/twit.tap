@@ -9,21 +9,8 @@ $(function(){ // jQuery document.ready
     $("div.playing_status>div").live('click',function(){
         __index = $(this).attr('index_number');
         playByIndex();
+        scrolling();
     });
-
-/** 眼鏡機能は全廃止
-    $("#megane").on('click',function(e){
-        q = $("#query_input").val();
-        _params.q = '#nowplaying+' + q;
-        __entry_list = [];
-        __index      =  0;
-        $("ul#twitter_results").html('');
-        $("ul#twitter_results").append(getSearchTemplate(q));
-        $("ul#twitter_results").append('<li id="loader_wrapper"><div id="loader"></div></li>').hide().fadeIn(400);
-        console.log(_params);
-        getTweet(_params);
-    });
-**/
 
     $("div#controlPannel>div#up>img").on('click',function(){
         playPrev();
@@ -55,7 +42,7 @@ $(function(){ // jQuery document.ready
     );
 
     $("div#music_title").on('click',function(){
-        pageScroll('index' + (__index - 1) );
+        scrolling();
     });
 
     $("img#twitter_share").live('click',function(){
