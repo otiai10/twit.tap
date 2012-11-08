@@ -294,9 +294,8 @@ function showLaoding(){
 }
 
 function shareThisVideo(){
-    alert(__entry_list[__index].youtube_title);
     console.log(__entry_list[__index]);
-    text = '#nowplaying ' + __entry_list[__index].youtube_title + ' ' + 'http://youtu.be/' + __entry_list[__index].youtube_hash;
+    text = __entry_list[__index].youtube_title + ' ' + 'http://youtu.be/' + __entry_list[__index].youtube_hash;
     option = "width=720,height=280";
-    window.open('https://twitter.com/intent/tweet?lang=en&text=' + text ,"",option);
+    window.open('https://twitter.com/intent/tweet?lang=en&hashtags=nowplaying&text=' + text ,"",option);
 }
