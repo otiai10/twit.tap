@@ -183,10 +183,10 @@ div#cont_right {
 }
 
 div#meta_action {
-    margin-top:80px;
+    margin-top:10px;
 }
 div#meta_action>a {
-    -webkit-opacity: 0.2;
+    -webkit-opacity: 0.9;
 }
 div#meta_action>a:hover {
     -webkit-opacity: 1;
