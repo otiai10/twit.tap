@@ -186,10 +186,10 @@ div#meta_action {
     margin-top:10px;
 }
 div#meta_action>a {
-    -webkit-opacity: 0.9;
+    -webkit-opacity: 1;
 }
 div#meta_action>a:hover {
-    -webkit-opacity: 1;
+    -webkit-opacity: 0.8;
 }
 
 object#player {
