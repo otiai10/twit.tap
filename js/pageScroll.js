@@ -20,7 +20,7 @@ function pageScroll(_tId)
     gValz.scrollLength = 8;
     
     // 時間（ 1000 = １秒 ）
-    var speedLength = 30;
+    var speedLength = 10;
     
     if (gValz.timeId) clearInterval(gValz.timeId);
     if (document.all && !window.opera)

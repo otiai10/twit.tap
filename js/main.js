@@ -7,7 +7,8 @@ $(function(){ // jQuery document.ready
     init();
 
     $("div.playing_status>div").live('click',function(){
-        __index = $(this).attr('index_number');
+        // 注意！attrで取ってきたら文字列！
+        __index = parseInt($(this).attr('index_number'));
         playByIndex();
         scrolling();
     });
@@ -26,6 +27,7 @@ $(function(){ // jQuery document.ready
 
     $("li#load_more>a#get_more").live('click',function(){
         alert('未実装☆（ゝω・）v');
+        scrolling();
     });
 
     $("img.switch").on('click',function(){
@@ -33,11 +35,13 @@ $(function(){ // jQuery document.ready
     });
 
     $("img.switch").hover(
-        function(){
+        function(e){
             switchBlackImage(this,$(this).attr('id'));
+            showDescription(this,$(this).attr('id'),e);
         },
-        function(){
+        function(e){
             recoverImage(this,$(this).attr('id'));
+            removeDescription(this,$(this).attr('id'),e);
         }
     );
 

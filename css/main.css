@@ -52,17 +52,68 @@ body {
     text-align: right;
 }
 
-div#mode_switch {
-    position:fixed;
-    top:5px;
-    left:700px;
+/**************************/
+/** switch2 ***************/
+/**************************/
+div#mode_switch2 {
+    height: 160px;
+    -webkit-box-sizing: box-content;
 }
-div#mode_switch>ul>li {
-    margin-right: 10px;
+div#mode_switch2>ul {
+    padding: 0;
 }
-div#mode_switch>ul>li>img.switch {
-    height: 70px;
+div#mode_switch2>ul>li {
+    display: -webkit-box;
+    -webkit-box-align: end;
+    height:160px;
+}
+div#mode_switch2>ul>li>img {
+    position: relative;
+    bottom:-20px;
+}
+div#mode_switch2>ul>li>img:hover {
     cursor:pointer;
+}
+div#mode_switch2>ul>li>img#gumi {
+    height: 140px;
+}
+div#mode_switch2>ul>li>img#teto {
+    height: 160px;
+}
+div#mode_switch2>ul>li>img#miku {
+    height: 152px;
+}
+div#mode_switch2>ul>li>img#luka {
+    height: 162px;
+}
+div#mode_switch2>ul>li>img#rinlen {
+    height: 130px;
+}
+div#mode_switch2>ul>li>img#ia {
+    height: 170px;
+}
+hr#vocalo_footer {
+    margin-top: 0;
+    margin-bottom: 20px;
+    width: 480px;
+    float: left;
+}
+/*********************/
+/**** desc_switch ****/
+/*********************/
+div.desc_switch {
+    position: absolute;
+    z-index:2;
+    width: 70px;
+    height: 20px;
+    border: thin dotted #333;
+    -webkit-border-radius: 10px;
+    background-color: #fff;
+    padding: 5px;
+    text-align: center;
+    color: #333;
+    font-size: 10px;
+    -webkit-opacity: 0.8;
 }
 
 div#social {
@@ -119,7 +170,7 @@ li#down>img {
 }
 **/
 div#controlPannel {
-    height: 90px;
+    height: 30px;
     width: 480px;
     margin: 0;
 }
@@ -183,7 +234,7 @@ div#cont_right {
 }
 
 div#meta_action {
-    margin-top:10px;
+    margin-top:50px;
 }
 div#meta_action>a {
     -webkit-opacity: 1;
@@ -224,6 +275,7 @@ li.fixed_list {
     text-align: center;
     display: table-cell;
     vertical-align: middle;
+    text-shadow: 0 1px 0 #fff;
 }
 
 li.fixed_list>input {

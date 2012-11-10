@@ -62,6 +62,7 @@ function getTweet(_params){
 function init(){
   getURLQuery();
   checkBrowser();
+  $("ul#twitter_results>li.search>div>span>span#time_detail").html(getTimeStr());
   $("div#social").hide();
   showLaoding();
   swfobject.embedSWF(
@@ -191,8 +192,12 @@ function getUniqueLink(user,id_str){
 }
 
 function getTimeStr(time_str){
-    time = new Date(time_str);
-    to_str = parseInt(1900+time.getYear())+'/'+('0'+(time.getMonth()+1)).slice(-2)+'/'+('0'+time.getDay()).slice(-2)+'  '+time.getHours()+':'+('0'+time.getMinutes()).slice(-2)/** +':'+('0'+time.getSeconds()).slice(-2) **/;
+    if(time_str == void 0){
+        time = new Date();
+    }else{
+        time = new Date(time_str);
+    }
+    to_str = parseInt(1900+time.getYear())+'/'+('0'+(time.getMonth()+1)).slice(-2)+'/'+('0'+time.getDay()).slice(-2)+'  '+('0'+time.getHours()).slice(-2)+':'+('0'+time.getMinutes()).slice(-2)/** +':'+('0'+time.getSeconds()).slice(-2) **/;
     return to_str;
 }
 
@@ -250,21 +255,31 @@ function switchBackgroundImage(vocalo){
        backgroundImage : 'url(' + src + ')',
     });
     _params.q = '#nowplaying+';
+    target_name = '';
     switch(vocalo){
         case 'gumi':
             _params.q += 'GUMI';
+            target_name = 'GUMI';
             break;
         case 'teto':
             _params.q += '重音テト';
+            target_name = 'テトさん';
             break;
         case 'miku':
             _params.q += '初音ミク';
+            target_name = 'ミクさん';
             break;
         case 'luka':
             _params.q += '巡音ルカ';
+            target_name = 'ルカさん';
             break;
         case 'rinlen':
             _params.q += '鏡音リン+OR+#nowplaying+鏡音レン';
+            target_name = 'リンちゃんレンちゃん';
+            break;
+        case 'ia':
+            _params.q += 'IA';
+            target_name = 'IAさん';
             break;
         default:
             _params.q += '初音ミク';
@@ -272,7 +287,11 @@ function switchBackgroundImage(vocalo){
     __entry_list = [];
     __index      =  0;
     $("ul#twitter_results").html('');
-    $("ul#twitter_results").append(getSearchTemplate(_params.q));
+    data = {
+        'target' : target_name,
+        'now'    : getTimeStr(),
+    };
+    $("ul#twitter_results").append(getSearchTemplate(data));
     pageScroll('index-1');
     showLaoding();
     getTweet(_params);
@@ -312,3 +331,49 @@ function filterEntryByKeywords(list){
     return purified_list;
 }
 
+function showDescription(obj, vocalo, e){
+    serif = getSerifOfVocalo(vocalo);
+    $(getDescriptionTemplate({'serif':serif})).appendTo('body').hide().css({
+        'left' : (e.pageX + 30) + 'px',
+        'top'  : (e.pageY - 10) + 'px',
+    }).stop().fadeIn(50,function(){
+        $(this).animate({
+            'top' : (e.pageY - 40) + 'px',
+        },200);
+    });
+}
+
+function removeDescription(obj, vocalo, e){
+    $("div.desc_switch").stop().fadeOut(100).remove();
+}
+
+function getSerifOfVocalo(vocalo){
+    serif = '';
+    switch(vocalo){
+        case 'gumi':
+            serif = 'めぐっぽいど';
+            break;
+        case 'teto':
+            //serif = '重音テトだお';
+            serif = '重音テト';
+            break;
+        case 'miku':
+            serif = 'ﾐｸﾀﾞﾖ-';
+            break;
+        case 'luka':
+            //serif = 'ﾅｲﾄﾌｨ-ﾊﾞ-';
+            serif = '巡音ルカ';
+            break;
+        case 'rinlen':
+            //serif = 'リンちゃんなう';
+            serif = '鏡音リン・レン';
+            break;
+        case 'ia':
+            //serif = 'IAと申します';
+            serif = 'IA';
+            break;
+        default:
+            serif = 'SELECT ME!';
+   }
+    return serif;
+}

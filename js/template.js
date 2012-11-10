@@ -15,7 +15,7 @@ function getListContent(data){
     var template = ''
     //+ '<div class="boxy tw_left">'
         + '<div class="fix_bottom icon_box">'
-            + '<div><img class="tw_icon" src="{%user_icon%}" width="48" height="48"></div>'
+            + '<div><a href="{%userlink%}" target="_blank"><img class="tw_icon" src="{%user_icon%}" width="48" height="48"></a></div>'
         + '</div>'
         + '<div class="content_box">'
             + '<div class="tw_text">'
@@ -68,22 +68,31 @@ function getQueryDisplay(data){
 
 function getLoadMoreArea(data){
     var template = ''
-        + '<li class="entry results" id="load_more"><a href="#" id="get_more">load more</a></li>';
+        + '<li class="entry results" id="load_more"><a id="get_more">load more</a></li>';
 
     return template;
 }
 
-function getSearchTemplate(query){
+function getSearchTemplate(target){
     var template = ''
 +'            <li class="entry fixed_list search" id="index-1">'
 +'              <div>'
-+'                <input id="query_input" placeholder="What music do you like?" value="{%query%}">'
-+'                <!-- button id="megane"><img tabindex="0" src="src/search.png"></button -->'
++'               <span id="rtime"><span id="time_detail">{%now%}</span>なう</span><br>'
++'               <span>今みんなが聞いてる<span id="target">{%target%}曲</span>とか</span>'
 +'              </div>'
 +'            </li>';
 
-    template = template.replace('{%query%}',query);
+    for(var i in data){
+        template = template.split('{%'+i+'%}').join(data[i]);
+    }
 
     return template;
 }
-   
+
+function getDescriptionTemplate(data){
+    var template = '<div class="desc_switch"><span>{%serif%}</span></div>';
+    for(var i in data){
+        template = template.split('{%'+i+'%}').join(data[i]);
+    }
+    return template;
+}
