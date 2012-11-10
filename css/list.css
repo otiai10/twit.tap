@@ -114,7 +114,7 @@ div.icon_box {
     -webkit-box-align: end;
     -moz-box-align: end;
 }
-div.icon_box>div>a>>img {
+div.icon_box>div>a>img {
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     -webkit-box-shadow: 1px 1px 4px #ccc;
