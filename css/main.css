@@ -206,7 +206,7 @@ img.share {
     height: 16px;
     -webkit-opacity: 0.5;
 }
-div#controlPannel>div#music_title>span>img#twitter_share:hover {
+img.share:hover {
     -webkit-opacity: 1;
     cursor:pointer;
 }
