@@ -97,6 +97,15 @@ hr#vocalo_footer {
     margin-bottom: 20px;
     width: 480px;
     float: left;
+    border: none;
+    border-top: thin dotted transparent;
+    height: 20px;
+/**
+    background: -webkit-gradient( linear, left top, right bottom,
+                                            from(rgba(0,0,0,0)),
+                                            to(rgba(0,0,0,0.5))
+                    );
+**/
 }
 /*********************/
 /**** desc_switch ****/
@@ -234,7 +243,7 @@ div#cont_right {
 }
 
 div#meta_action {
-    margin-top:50px;
+    margin-top:45px;
 }
 div#meta_action>a {
     -webkit-opacity: 1;
@@ -295,4 +304,12 @@ li.fixed_list>img {
     -webkit-opacity: 0.2;
     -moz-opacity: 0.2;
     cursor:pointer;
+}
+
+span#tail_desc {
+    text-align: right;
+    font-size: 8px;
+    color: #333;
+    float: left;
+    margin-right: 10px;
 }
