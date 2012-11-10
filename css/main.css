@@ -272,14 +272,24 @@ object#player {
 }
 
 li.fixed_list {
+    /**
     text-align: center;
     display: table-cell;
     vertical-align: middle;
+    **/
+    display: -webkit-box;
+    -webkit-box-align: center;
     text-shadow: 0 1px 0 #fff;
+    height: 90px;
 }
 
 li.fixed_list>input {
     font-size: 12px;
+}
+li.fixed_list>div {
+    width: 400px;
+    margin: 0 auto;
+    text-align: center;
 }
 li.fixed_list>img {
     -webkit-opacity: 0.2;

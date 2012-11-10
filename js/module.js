@@ -197,7 +197,7 @@ function getTimeStr(time_str){
     }else{
         time = new Date(time_str);
     }
-    to_str = parseInt(1900+time.getYear())+'/'+('0'+(time.getMonth()+1)).slice(-2)+'/'+('0'+time.getDay()).slice(-2)+'  '+('0'+time.getHours()).slice(-2)+':'+('0'+time.getMinutes()).slice(-2)/** +':'+('0'+time.getSeconds()).slice(-2) **/;
+    to_str = parseInt(1900+time.getYear())+'/'+('0'+(time.getMonth()+1)).slice(-2)+'/'+('0'+time.getDate()).slice(-2)+'  '+('0'+time.getHours()).slice(-2)+':'+('0'+time.getMinutes()).slice(-2)/** +':'+('0'+time.getSeconds()).slice(-2) **/;
     return to_str;
 }
 
