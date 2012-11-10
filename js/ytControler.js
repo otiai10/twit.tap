@@ -69,9 +69,10 @@ function scrolling(){
 }
 
 function showNowPlaying(){
+    img_fb = getFBShareButton(__entry_list[__index]);
     $("div#music_title>span")
     .fadeOut(300,function(){
-        $(this).html(__entry_list[__index].youtube_title + '   <img id="twitter_share" src="src/twitter-t.png">')
+        $(this).html(__entry_list[__index].youtube_title + '   <img id="twitter_share" class="share" src="src/twitter-t.png">  ' + img_fb)
         .hide().fadeIn(300);
     });
 }

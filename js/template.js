@@ -96,3 +96,10 @@ function getDescriptionTemplate(data){
     }
     return template;
 }
+
+function getFBShareButton(data){
+    var url   = encodeURIComponent('http://youtu.be/' + data.youtube_hash);
+    var title =  data.youtube_title;
+    var template = '<a href="http://www.facebook.com/sharer.php?u='+url+'&amp;t='+title+'" rel="nofollow" target="_blank"><img id="fb_share" class="share" src="src/fb.png"></a>';
+    return template;
+}

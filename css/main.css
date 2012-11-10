@@ -202,7 +202,7 @@ div#controlPannel>div#music_title>span {
     color: #333;
     font-size: 12px;
 }
-div#controlPannel>div#music_title>span>img#twitter_share {
+img.share {
     height: 16px;
     -webkit-opacity: 0.5;
 }
