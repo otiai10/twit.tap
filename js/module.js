@@ -322,6 +322,11 @@ function shareThisVideo(){
 function filterEntryByKeywords(list){
     purified_list = [];
     for(var i in list){
+        // ブラックリスト
+        if(true){
+        }else{
+        }
+        // ホワイトリスト
         if(list[i].youtube_title.match(/初音|ミク|Hatsune|Miku|巡音|ルカ|Megurine|Luka|重音|テト|Kasane|Teto|鏡音|リン|レン|Kagamine|Rin|Len|グミ|GUMI|Meguppoid|Vocaloid/i)){
             purified_list.push(list[i]);
         }else{
