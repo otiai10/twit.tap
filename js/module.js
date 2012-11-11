@@ -396,7 +396,7 @@ function botFavorite(id_str){
         },
         error : function(err){
           setTimeout(function(){
-            alert('今ちょっとbotは寝てます_(:3 ∠ )_');
+            alert("今ちょっとbotは寝てます_(:3 ∠ )_\n自分でfavってください");
           },500);
         }
     });
