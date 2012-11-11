@@ -86,31 +86,24 @@ function searchYoutube(entry, key_in_buffer, end_flag){
     dataType:   'jsonp',
     success :   function(response){
       if(response.feed.entry !== void 0){
+        // youtubeの検索結果があった
         for(i=0; i<response.feed.entry.length; i++){
-
-            res = response.feed.entry[i];
-            if(res.category[1].term === 'Music' && res.media$group.yt$duration.seconds < 600){
-                youtube_hash = getHash(res.id.$t);
-                __buffer_twitter[key_in_buffer].youtube_hash  = youtube_hash;
-                __buffer_twitter[key_in_buffer].youtube_title = res.title.$t;
-                __entry_list.push(__buffer_twitter[key_in_buffer]);
-
-// TODO: showResultにscinceを渡して、getLoadMoreAreaに渡して、load_moreに付加する
-                if(end_flag == true){
-                    showResult();
-                }
-              break;
+            if(response.feed.entry[i].category[1].term === 'Music' && response.feed.entry[i].media$group.yt$duration.seconds < 480){
+                // これはいい感じのyoutubeなので、プレイリストに入れる
+                pushGoodVideo(response.feed.entry[i], key_in_buffer);
+                // いい感じのyotubeだったので、これ以上youtube検索結果は見ない
+                break;
             }else{
-                if(end_flag == true){
-                    showResult();
-                }
+                // いい感じのyoutubeじゃなかったので、次のyoutubeを見る
+                continue;
             }
         }
       }else{
-        console.log('NOT FOUND ON YOUTUBE');
-        if(end_flag == true){
-            showResult();
-        }
+        // そもそもyoutubeの検索結果が無かった
+      }
+      // これがtweet検索結果的に最後のエントリなのであれば、showResultしちゃう
+      if(end_flag == true){
+          showResult();
       }
     },
     error   :   function(err){
@@ -120,6 +113,7 @@ function searchYoutube(entry, key_in_buffer, end_flag){
 }
 
 function showResult(){
+    alert('show');
     // remove loader
     __entry_list = filterEntryByKeywords(__entry_list);
     $("li#loader_wrapper").fadeOut(1000,function(){
@@ -127,6 +121,13 @@ function showResult(){
         drawList(__entry_list);
         $('ul#twitter_results').append(getLoadMoreArea({}));
     });
+}
+
+function pushGoodVideo(entry, key_in_buffer){
+    youtube_hash = getHash(entry.id.$t);
+    __buffer_twitter[key_in_buffer].youtube_hash  = youtube_hash;
+    __buffer_twitter[key_in_buffer].youtube_title = entry.title.$t;
+    __entry_list.push(__buffer_twitter[key_in_buffer]);
 }
 
 function drawList(list){
@@ -246,7 +247,7 @@ function getURLQuery(){
         console.log(decodeURIComponent(query.replace(/^q=/,'')));
     }
 **/
-    console.log(decodeURIComponent(query));
+    //console.log(decodeURIComponent(query));
     //TODO: GET値を反映させるなら、tweetボタンのURLは「現在のウェブページのURL」では不適
 }
 
