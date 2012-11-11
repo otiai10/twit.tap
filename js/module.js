@@ -113,7 +113,6 @@ function searchYoutube(entry, key_in_buffer, end_flag){
 }
 
 function showResult(){
-    alert('show');
     // remove loader
     __entry_list = filterEntryByKeywords(__entry_list);
     $("li#loader_wrapper").fadeOut(1000,function(){
