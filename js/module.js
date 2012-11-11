@@ -391,10 +391,14 @@ function botFavorite(id_str){
         url  : 'http://twittap.com:4000/fav',
         data : 'id=' + id_str,
         success : function(response){
-           console.log(response);
+          console.log(response);
+          //TODO: サーバからステータス送って、それを受けてDOM操作する
+          alert('favりました。botがね');
         },
         error : function(err){
-          console.log(err);
+          setTimeout(function(){
+            alert('今ちょっとbotは寝てます_(:3 ∠ )_');
+          },500);
         }
     });
 }
