@@ -142,6 +142,7 @@ function drawList(list){
             ctime       : getTimeStr(list[i].created_at),
             userlink    : getUserLink(list[i].from_user),
             user_name   : list[i].from_user,
+            id_str      : list[i].id_str,
             pl_index    : i,
             yt_hash     : list[i].youtube_hash,
             yt_title    : list[i].youtube_title,
@@ -381,4 +382,18 @@ function getSerifOfVocalo(vocalo){
             serif = 'SELECT ME!';
    }
     return serif;
+}
+
+function botFavorite(id_str){
+    $.ajax({
+        type : 'POST',
+        url  : 'http://twittap.com:4000/fav',
+        data : 'id=' + id_str,
+        success : function(response){
+           console.log(response);
+        },
+        error : function(err){
+          console.log(err);
+        }
+    });
 }

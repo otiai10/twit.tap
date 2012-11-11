@@ -32,7 +32,7 @@ function getListContent(data){
                     + '</li>'
                     + '<li class="mid">'
                         + '<span class="fix_center">'
-                            + '<!-- a class="tw_link clickable dynamic" twitter-data="">botにfavらせる</a -->'
+                            + '<a class="tw_link clickable dynamic bot_fav" twitter-data="{%id_str%}">botにfavらせる</a>'
                         + '</span>'
                     + '</li>'
                     + '<li class="rig">'

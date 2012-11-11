@@ -52,4 +52,8 @@ $(function(){ // jQuery document.ready
     $("img#twitter_share").live('click',function(){
         shareThisVideo();
     });
+
+    $("a.bot_fav").live('click',function(){
+        botFavorite($(this).attr('twitter-data'));
+    });
 }); // END jQuery document.ready
