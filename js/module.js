@@ -50,8 +50,9 @@ function getTweet(_params){
             },(60*1000));
 **/
         }else{
-            alert("Twitter API returns Error.\nSorry, please reload");
-            console.log(response);
+            if (response.error.match(/limited/g)) {
+                alert("Twitterの検索API使い過ぎだって\n叱られてしまったお...\n_(:3 ∠ )_\nこの曲が終わるくらいには回復してるかも");
+            }
         }
     },
     error   :   function(err){
@@ -66,9 +67,10 @@ function init(){
   $("ul#twitter_results>li.search>div>span>span#time_detail").html(getTimeStr());
   $("div#social").hide();
   showLaoding();
+  var hash_once = getInitialHashAndTitle();
   swfobject.embedSWF(
-    "http://www.youtube.com/v/MGt25mv4-2Q?enablejsapi=1&autoplay=1&playerapiid=player",
-    "video","480","320","8",null,null,{allowScriptAccess:"always"},{id:"player"    }
+    "http://www.youtube.com/v/" + hash_once.hash + "?enablejsapi=1&autoplay=1&playerapiid=player",
+    "video","420","300","8",null,null,{allowScriptAccess:"always"},{id:"player"    }
   );
   _params.q += '+初音ミク';
   getTweet(_params);
@@ -312,7 +314,7 @@ function recoverImage(obj, vocalo){
 }
 
 function showLaoding(){
-    $("ul#twitter_results").append('<li id="loader_wrapper" class="entry" ><div id="loader"><img id="guruguru" src="src/loading.png"><img id="hachunemiku" src="src/hachu.gif"></div></li>').hide().fadeIn(400);
+    $("ul#twitter_results").append('<li id="loader_wrapper" class="entry" ><div id="loader"><!--img id="guruguru" src="src/loading.png"--><img id="hachunemiku" src="src/hachu.gif"><br>loading</div></li>').hide().fadeIn(400);
 }
 
 function shareThisVideo(){
@@ -397,8 +399,29 @@ function botFavorite(id_str){
         },
         error : function(err){
           setTimeout(function(){
-            alert("今ちょっとbotは寝てます_(:3 ∠ )_\n自分でfavってください");
+            alert("今ちょっとbotは寝てるようです_(:3 ∠ )_\n自分でfavってください");
           },500);
         }
+    });
+}
+
+function getInitialHashAndTitle(){
+    var initialHashes = [
+        { hash:'MGt25mv4-2Q',title:                                              "Tell Your World"},
+        { hash:'7jd3D_LA1uI',title:     "【初音ミク】恋なんか知らない（恋愛感染症#1）【オリジナル"},
+        { hash:'fJJqyrzXgeI',title:                "初音ミクオリジナル曲 「Breath of mechanical」"},
+        { hash:'UwrKHOHIzoU',title:"VOCALOID2: Hatsune Miku Append - Fallin' Fallin' Fallin' [HD]"},
+        { hash:'JB3rtmoUY_U',title:    "【初音ミクAppend】ココロカラ -Sweet mix-【with 中文字幕】"}
+    ];
+    var i = Math.floor(Math.random() * initialHashes.length);
+    showInitialHash(initialHashes[i].title);
+    return initialHashes[i];
+}
+
+function showInitialHash(title){
+    $("div#music_title>span")
+    .fadeOut(100,function(){
+        $(this).html('ツイートのロードが終わるまでこちらの曲をお楽しみくだしあ --' + title)
+        .hide().fadeIn(300);
     });
 }

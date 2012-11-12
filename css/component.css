@@ -1,0 +1,61 @@
+/**
+ * css for new component structure
+**/
+
+div#main {
+    position: relative;
+}
+
+div#header>div#header_contents {
+    width: 900px;
+    height: 90px;
+    margin: 0 auto;
+}
+div#sub_wrapper {
+/**
+    background-image: url('../src/vocaloids/miku.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: 250px 200px;
+**/
+    width: 900px;
+    min-height: 800px;
+    margin: 0 auto;
+}
+
+div#cont_left {
+    width: 470px;
+    margin-top: 90px;
+}
+
+div#cont_right {
+    position:fixed;
+    /* position fixed + margin使える */
+    margin-left: 0;
+    top:    90px;
+}
+
+/***** リストの中 *****/
+div.icon_box {
+    width: 52px; /* これが左 */
+    padding: 2px;
+    display: -webkit-box;
+    display: -moz-box;
+    -webkit-box-align: end;
+    -moz-box-align: end;
+}
+div.content_box {
+    width: 320px; /* これが真ん中 */
+}
+div.playing_status {
+    width: 28px; /* これが右 */
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    display: -webkit-box;
+    display: -moz-box;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -webkit-opacity: 0.1;
+    -moz-opacity: 0.1;
+}
+

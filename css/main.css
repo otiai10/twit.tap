@@ -1,4 +1,4 @@
-body, #wrapper {
+html, body, #wrapper {
     padding: 0;
     margin:  0;
     clear: both;
@@ -9,9 +9,7 @@ body {
     background-image: url('../src/vocaloids/miku.png');
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-position: 350px 200px;
-    /* min-height: 1200px; */
-    /* min-width: 5400px; */
+    background-position: 150px 200px;
 }
 
 #header {
@@ -23,7 +21,6 @@ body {
                 );
     background: -moz-linear-gradient(                      top,
                                                           #aaa,
-                    /* color-stop(0.3, rgba(256,256,256,1)), */
                                             rgba(256,256,256,0)
                 );
 
@@ -37,7 +34,6 @@ body {
     position: fixed;
     bottom: 0;
     background: -webkit-gradient(linear, left top, left bottom,
-                    /* color-stop(0.3, rgba(256,256,256,1)), */
                                        from(rgba(256,256,256,0)),
                                                     to(#aaa)
                 );
@@ -56,41 +52,48 @@ body {
 /** switch2 ***************/
 /**************************/
 div#mode_switch2 {
-    height: 160px;
+    height: 120px;
     -webkit-box-sizing: box-content;
+    width: 420px;
 }
 div#mode_switch2>ul {
     padding: 0;
+    height:120px;
+    width: 360px;
+    margin: 0 auto;
 }
 div#mode_switch2>ul>li {
     display: -webkit-box;
     -webkit-box-align: end;
-    height:160px;
+    height:120px;
+    width:60px;
 }
 div#mode_switch2>ul>li>img {
     position: relative;
     bottom:-20px;
+    display: -webkit-box;
+    margin: 0 auto;
 }
 div#mode_switch2>ul>li>img:hover {
     cursor:pointer;
 }
 div#mode_switch2>ul>li>img#gumi {
-    height: 140px;
+    height: 105px; /* 140*(3/4) */
 }
 div#mode_switch2>ul>li>img#teto {
-    height: 160px;
+    height: 120px; /* 160*(3/4) */
 }
 div#mode_switch2>ul>li>img#miku {
-    height: 152px;
+    height: 114px; /* 152*(3/4) */
 }
 div#mode_switch2>ul>li>img#luka {
-    height: 162px;
+    height: 121px; /* 162*(3/4) */
 }
 div#mode_switch2>ul>li>img#rinlen {
-    height: 130px;
+    height: 99px; /* 130*(3/4) */
 }
 div#mode_switch2>ul>li>img#ia {
-    height: 170px;
+    height: 127px; /* 170*(3/4) */
 }
 hr#vocalo_footer {
     margin-top: 0;
@@ -138,10 +141,12 @@ div#social {
     height: 20px;
 }
 
+div#titlewrapper>pre {
+}
 div#titlewrapper {
-    position : fixed;
-    left : 1050px;
-    top  : 8px;
+    float: right;
+    margin-right: 10px;
+    margin-top: 5px;
 }
 div#titlewrapper>pre {
     margin-top: 10px;
@@ -190,13 +195,11 @@ div#controlPannel>ul>li>img {
 }
 **/
 div#controlPannel>div>img {
-    width: 30px;
+    width: 30px; /* 30 */
     cursor: pointer;
 }
 div#controlPannel>div#music_title {
-    width: 396px;
-    /* debug */
-    /* -webkit-box-sizing: box-border; */
+    width: 336px; /* == 420 - (30*2) - (padding*2) */
     padding:1px 12px;
 }
 div#controlPannel>div#music_title>span {
@@ -231,26 +234,23 @@ li#down {
     display: -moz-box;
 }
 
-div#cont_left {
-    width: 50%;
-    margin-top: 90px;
-}
-
-div#cont_right {
-    width: 50%;
-    position:fixed;
-    left: 700px;
-    top:    90px;
-}
-
 div#meta_action {
     margin-top:45px;
+    width: 420px;
+    margin-right:10px;
 }
 div#meta_action>a {
     -webkit-opacity: 1;
+    float: right;
 }
 div#meta_action>a:hover {
     -webkit-opacity: 0.8;
+}
+span#tail_desc {
+    font-size: 8px;
+    color: #333;
+    float: right;
+    margin-right: 10px;
 }
 
 object#player {
@@ -271,7 +271,7 @@ object#player {
 }
 
 .tw_link {
-    font-size: 14px;
+    font-size: 10px;
     color: #aaa;
     text-shadow: 0 0 1px #eee;
     text-decoration: none;
@@ -307,10 +307,3 @@ li.fixed_list>img {
     cursor:pointer;
 }
 
-span#tail_desc {
-    text-align: right;
-    font-size: 8px;
-    color: #333;
-    float: left;
-    margin-right: 10px;
-}
