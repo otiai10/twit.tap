@@ -51,6 +51,7 @@ function getTweet(_params){
 **/
         }else{
             alert("Twitter API returns Error.\nSorry, please reload");
+            console.log(response);
         }
     },
     error   :   function(err){
