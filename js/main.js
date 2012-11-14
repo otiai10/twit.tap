@@ -54,6 +54,6 @@ $(function(){ // jQuery document.ready
     });
 
     $("a.bot_fav").live('click',function(){
-        botFavorite($(this).attr('twitter-data'));
+        botFavorite($(this));
     });
 }); // END jQuery document.ready

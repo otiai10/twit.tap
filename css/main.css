@@ -198,6 +198,10 @@ div#controlPannel>div>img {
     width: 30px; /* 30 */
     cursor: pointer;
 }
+div#controlPannel>div>img:active {
+    -webkit-opacity:0.8;
+}
+
 div#controlPannel>div#music_title {
     width: 336px; /* == 420 - (30*2) - (padding*2) */
     padding:1px 12px;

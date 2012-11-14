@@ -16,6 +16,8 @@ function playByIndex(){
         $('div.playing_status').removeClass('active');
         $('#index' + __index).addClass('active');
         showNowPlaying();
+        changeFavicon();
+        changeTabTitle();
     });
     scrolling();
 }
@@ -76,3 +78,25 @@ function showNowPlaying(){
         .hide().fadeIn(300);
     });
 }
+
+function changeFavicon(){
+    if(__index < 0){
+        // do nothing
+    }else{
+        $('link#favicon').attr({
+            'href' : __entry_list[__index].profile_image_url,
+            'rel'  : 'shorcut icon',
+        });
+    }
+}
+
+function changeTabTitle(){
+    if(__index < 0){
+        // do nothing
+    }else{
+        var name = __entry_list[__index].from_user;
+        $('title').html(name + '@twit.tap');
+    }
+}
+
+

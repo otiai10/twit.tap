@@ -22,7 +22,7 @@ li#loader_wrapper>div#loader {
     margin: 50px auto;
 }
 
-div#loader>img#guruguru {
+img.guruguru {
     -webkit-animation-name :             rotate;
     -webkit-animation-duration:              1s;
     -webkit-animation-timing-function:   linear;
@@ -33,6 +33,10 @@ div#loader>img#guruguru {
     -moz-animation-timing-function:   linear;
     -moz-animation-iteration-count: infinite;
 }
+img.alpha {
+    -webkit-opacity: 0.5;
+}
+
 div#loader>img#hachunemiku {
     width: 36px;
 }
@@ -84,7 +88,7 @@ li.entry:hover>div.playing_status {
     -webkit-opacity: 0.7;
     -moz-opacity: 0.7;
 }
-li.entry:hover>div.content_box>div.tw_meta>ul>li>span>a.clickable {
+li.entry:hover>div.content_box>div.tw_meta>ul>li>span>a.clickable:not(.fav_state) {
     color: #999;
 }
 li.entry:hover>div.content_box>div.tw_meta>ul>li>span>a.clickable.dynamic {
@@ -155,12 +159,13 @@ div.playing_status.active {
 div.playing_status.active:after {
     content: url('../src/headphone.png');
 }
-/**
-div.playing_status.active>div:hover:before {
-    content: 'たぶんこれ.ちがったらごめん';
-    font-size: 3px;
-}
-**/
 
 div.playing_status.active>div>img {
+}
+
+a.fav_state>img {
+    height: 12px;
+    vertical-align: bottom;
+}
+a.fav_state>img.fav {
 }

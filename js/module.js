@@ -2,6 +2,7 @@
  * module.js
 **/
 
+/****** twitter API const *****/
 var _twitter_url = 'http://search.twitter.com/search.json';
 var _params = {
   page  :             1,
@@ -9,19 +10,29 @@ var _params = {
   lang  :          'ja',
   rpp   :         '200',
 };
-
+/******************************/
+/****** youtube API const *****/
 var _youtube_url = 'http://gdata.youtube.com/feeds/api/videos';
 var _youtube_params = {
   alt         :   'json',
   q           :       '',
   category    :  'Music',
 };
-
+/******************************/
+/****** main contents container ******/
 var __entry_list = [];
 var __index = -1;
-
+/*************************************/
+/****** buffer for async process *****/
 var __buffer_twitter = [];
 var __buffer_youtube = [];
+/**************************************/
+/***** Const for communicate bot ******/
+var FAV_FAILED    = 0;
+var FAV_SUCCEEDED = 1;
+var FAV_RETWEETED = 2;
+var FAV_MENTIONED = 3;
+/**************************************/
 
 function getTweet(_params){
   $.ajax({
@@ -298,6 +309,7 @@ function switchBackgroundImage(vocalo){
     $("ul#twitter_results").append(getSearchTemplate(data));
     pageScroll('index-1');
     showLaoding();
+    changeTabTitle(target_name);
     getTweet(_params);
 }
 
@@ -387,24 +399,6 @@ function getSerifOfVocalo(vocalo){
     return serif;
 }
 
-function botFavorite(id_str){
-    $.ajax({
-        type : 'POST',
-        url  : 'http://twittap.com:4000/fav',
-        data : 'id=' + id_str,
-        success : function(response){
-          console.log(response);
-          //TODO: サーバからステータス送って、それを受けてDOM操作する
-          alert('favりました。botがね');
-        },
-        error : function(err){
-          setTimeout(function(){
-            alert("今ちょっとbotは寝てるようです_(:3 ∠ )_\n自分でfavってください");
-          },500);
-        }
-    });
-}
-
 function getInitialHashAndTitle(){
     var initialHashes = [
         { hash:'MGt25mv4-2Q',title:                                              "Tell Your World"},
@@ -421,7 +415,76 @@ function getInitialHashAndTitle(){
 function showInitialHash(title){
     $("div#music_title>span")
     .fadeOut(100,function(){
-        $(this).html('ツイートのロードが終わるまでこちらの曲をお楽しみくだしあ --' + title)
+        $(this).html('ツイートのロードが終わるまでこちらの曲をお楽しみくだしあ- ' + title)
         .hide().fadeIn(300);
     });
+}
+
+function changeTabTitle(str){
+    $('title').html(' ' + str + '@twit.tap');
+}
+
+function botFavorite(jqObj){
+    removeInitial(jqObj);
+    showGuruguru(jqObj);
+    id_str = jqObj.attr('twitter-data');
+    name   = jqObj.attr('twitter-user');
+    $.ajax({
+        type : 'POST',
+        url  : 'http://twittap.com:4000/fav',
+        data : 'id=' + id_str + '&name=' + name,
+        success : function(res){
+          setTimeout(function(){
+            $('img.tmp').fadeOut(100,function(){
+              $('img.tmp').remove();
+              //サーバからステータス受け取って、それに沿ってDOM操作する
+              if(res.state == FAV_SUCCEEDED){
+                feedbackFav(jqObj);
+              }else if(res.state == FAV_RETWEETED){
+                feedbackRt(jqObj);
+                alert('すでにfavられてるので、Retweetしときました');
+              /**
+              }else if(res.state == FAV_MENTIONED){
+                alert('すでに2回もfavられてるんで、mentionしときました');
+              **/
+              }else{ // == FAV_FAILED
+                recoverInitial(jqObj);
+                alert("今ちょっとbotは寝てるようです_(:3 ∠ )_\n自分でfavってください");
+              }
+            });
+          },900);
+        },
+        error : function(err){
+          setTimeout(function(){
+            $('img.tmp').remove();
+            recoverInitial(jqObj);
+            alert("今ちょっとbotは寝てるようです_(:3 ∠ )_\n自分でfavってください");
+          },900);
+        }
+    });
+}
+function removeInitial(jqObj){
+    jqObj
+    .removeClass('dynamic')
+    .addClass('fav_state')
+    .children('span.initial').remove()
+}
+function recoverInitial(jqObj){
+    jqObj
+    .addClass('dynamic')
+    .removeClass('fav_state')
+    .append('<span class="initial">botにfavらせる</span>');
+}
+function showGuruguru(jqObj){
+    $('<img src="src/loading.png" class="guruguru alpha tmp">').appendTo(jqObj);
+}
+function feedbackFav(jqObj){
+    $('<img src="src/fav.png" class="fav">').appendTo(jqObj)
+    .hide()
+    .fadeIn(100);
+}
+function feedbackRt(jqObj){
+    $('<img src="src/rt.png" class="rt">').appendTo(jqObj)
+    .hide()
+    .fadeIn(100);
 }
