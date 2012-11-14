@@ -39,6 +39,8 @@ img.alpha {
 
 div#loader>img#hachunemiku {
     width: 36px;
+    -webkit-opacity: 0.9;
+    -webkit-box-shadow: 0 0 5px #FFF;
 }
 
 ul#twitter_results {
