@@ -309,7 +309,6 @@ function switchBackgroundImage(vocalo){
     $("ul#twitter_results").append(getSearchTemplate(data));
     pageScroll('index-1');
     showLaoding();
-    changeTabTitle(target_name);
     getTweet(_params);
 }
 
