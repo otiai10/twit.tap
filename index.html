@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>twit.tap</title>
+    <title>EarphoneShare</title>
     <meta charset="utf-8">
     <meta name="keywords" content="twit.tap, Twit.tap, Twittap, twittap">
     <meta name="description" content="知ってる曲も知らない曲も。良い音楽との出会いを求めて、聞き流し系ボーカロイド曲エクスプローラー “twit.tap”">
@@ -42,79 +42,58 @@
             </li>
           </ul>
         </div>
+
+        <!--cont_right-->
         <div id="cont_right">
-          <!-- switch again
-          <div id="mode_switch2">
-            <ul class="default horizon">
-              <li>
-                  <img id="gumi"   class="switch" src="src/vocaloids/gumi-b.png">
-              </li>
-              <li>
-                  <img id="teto"   class="switch" src="src/vocaloids/teto-b.png">
-              </li>
-              <li>
-                  <img id="miku"   class="switch" src="src/vocaloids/miku-b.png">
-              </li>
-              <li>
-                  <img id="luka"   class="switch" src="src/vocaloids/luka-b.png">
-              </li>
-              <li>
-                  <img id="rinlen" class="switch" src="src/vocaloids/rinlen-b.png">
-              </li>
-              <li>
-                  <img id="ia"     class="switch" src="src/vocaloids/ia-b.png">
-              </li>
-            </ul>
-          </div>
-           /switch again -->
-          <div id="video"></div>
-          <!-- control pannel -->
+          <!--video-->
+          <div id="video"></div><!--/video-->
+          <!--control pannel-->
           <div id="controlPannel" class="boxy">
             <div id="up"><img src="src/back.png"></div>
             <div id="music_title"><span>ツイートのロードが終わるまでこちらの<br>曲をお楽しみくだしあ -- Tell Your World</span></div>
             <div id="down"><img src="src/forward.png"></div>
-<!--
-            <ul id="control" class="default horizon">
-              <li id="up"><img src="src/back.png"></li>
-              <li id="down"><img src="src/forward.png"></li>
-            </ul>
--->
-          </div>
-          <!-- /control pannel -->
+          </div><!-- /control pannel -->
           <!-- mode_switch2 -->
           <div id="mode_switch2">
             <ul class="default horizon">
               <li>
-                  <img id="gumi"   class="switch" src="src/vocaloids/gumi-b.png">
+                  <img id="gumi"   class="switch vocaloids" src="src/vocaloids/gumi-b.png">
               </li>
               <li>
-                  <img id="teto"   class="switch" src="src/vocaloids/teto-b.png">
+                  <img id="teto"   class="switch vocaloids" src="src/vocaloids/teto-b.png">
               </li>
               <li>
-                  <img id="miku"   class="switch" src="src/vocaloids/miku-b.png">
+                  <img id="miku"   class="switch vocaloids" src="src/vocaloids/miku-b.png">
               </li>
               <li>
-                  <img id="luka"   class="switch" src="src/vocaloids/luka-b.png">
+                  <img id="luka"   class="switch vocaloids" src="src/vocaloids/luka-b.png">
               </li>
               <li>
-                  <img id="rinlen" class="switch" src="src/vocaloids/rinlen-b.png">
+                  <img id="rinlen" class="switch vocaloids" src="src/vocaloids/rinlen-b.png">
               </li>
               <li>
-                  <img id="ia"     class="switch" src="src/vocaloids/ia-b.png">
+                  <img id="ia"     class="switch vocaloids" src="src/vocaloids/ia-b.png">
               </li>
             </ul>
             <hr id="vocalo_footer">
-          </div>
-          <!-- /mode_switch2 -->
+          </div><!-- /mode_switch2 -->
           <!-- meta -->
           <div id="meta_action">
-            <!-- a href="https://twitter.com/share" class="twitter-share-button" data-text="♪聞き流し系 Vocaloid Explorer &quot;twit.tap&quot;">Tweet</a>
-            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script --> 
-            <a href="https://github.com/otiai10/twit.tap" target="_blank"><img src="src/github_logo.png" width="45px"></a>
-            <span id="tail_desc">♪聞き流し系 Vocalid Explorer “twit.tap”</span>
-          </div>
-          <!-- /meta -->
-        </div>
+            <div>
+              <img id="everyone_faved" class="switch" src="src/vocaloids/everyone_faved-b.png">
+            </div>
+          </div><!-- /meta_action -->
+          <!--info-->
+          <div id="info">
+            <hr id="info_hr">
+            <div id="info_cont">
+              <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://earphoneshare.com" data-text="♪聞き流し系ボカロ曲エクスプローラー &quot;EarphoneShare&quot;" data-via="EarphoneShare">Tweet</a>
+              <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+              <a class="fix_right" href="https://github.com/otiai10/twit.tap" target="_blank"><img src="src/github_logo.png" width="45px"></a>
+              <span id="tail_desc" class="fix_right">♪聞き流し系 Vocalid Explorer “EarphoneShare”</span>
+            </div>
+          </div><!--/info-->
+        </div><!--/cont_right-->
       </div><!-- /main -->
 </div><!-- /#sub_wrapper -->
       <div id="footer">

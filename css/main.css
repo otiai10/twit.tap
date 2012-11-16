@@ -97,18 +97,15 @@ div#mode_switch2>ul>li>img#ia {
 }
 hr#vocalo_footer {
     margin-top: 0;
-    margin-bottom: 20px;
     width: 480px;
     float: left;
     border: none;
     border-top: thin dotted transparent;
     height: 20px;
-/**
-    background: -webkit-gradient( linear, left top, right bottom,
-                                            from(rgba(0,0,0,0)),
-                                            to(rgba(0,0,0,0.5))
-                    );
-**/
+}
+img#everyone_faved {
+    width:100px;
+    -webkit-opacity: 0.7;
 }
 /*********************/
 /**** desc_switch ****/
@@ -168,22 +165,6 @@ ul.default {
 ul.horizon>li {
     float: left;
 }
-/**
-ul#control {
-    padding-left: 0;
-}
-**/
-/**
-li#up {
-    margin-bottom: 80px;
-}
-li#up>img {
-    -webkit-transform: rotate(90deg);
-}
-li#down>img {
-    -webkit-transform: rotate(-90deg);
-}
-**/
 div#controlPannel {
     height: 30px;
     width: 480px;
@@ -199,7 +180,7 @@ div#controlPannel>div>img {
     cursor: pointer;
 }
 div#controlPannel>div>img:active {
-    -webkit-opacity:0.8;
+    -webkit-opacity:0.7;
 }
 
 div#controlPannel>div#music_title {
@@ -238,23 +219,29 @@ li#down {
     display: -moz-box;
 }
 
-div#meta_action {
-    margin-top:45px;
-    width: 420px;
-    margin-right:10px;
+div#meta_action>div {
+    width:420px;
+    height:50px;
 }
-div#meta_action>a {
+div#meta_action>div>a>img, div#meta_action>div>img {
     -webkit-opacity: 1;
     float: right;
 }
-div#meta_action>a:hover {
+div#meta_action>ul>li>a:hover {
     -webkit-opacity: 0.8;
 }
 span#tail_desc {
     font-size: 8px;
     color: #333;
-    float: right;
     margin-right: 10px;
+}
+div#info {
+    width: 420px;
+    clear: both;
+    margin-top: 30px;
+}
+hr#info_hr {
+    margin-bottom: 2px;
 }
 
 object#player {
@@ -286,11 +273,6 @@ object#player {
 }
 
 li.fixed_list {
-    /**
-    text-align: center;
-    display: table-cell;
-    vertical-align: middle;
-    **/
     display: -webkit-box;
     -webkit-box-align: center;
     text-shadow: 0 1px 0 #fff;

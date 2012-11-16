@@ -3,7 +3,8 @@
 **/
 
 /****** twitter API const *****/
-var _twitter_url = 'http://search.twitter.com/search.json';
+var _twitter_url  = 'http://search.twitter.com/search.json';
+var _bot_favs_url = 'http://api.twitter.com/1/favorites.json?count=5&screen_name=twit_tap';
 var _params = {
   page  :             1,
   q     : '#nowplaying',
@@ -41,6 +42,7 @@ function getTweet(_params){
     data    :   _params,
     dataType:   'jsonp',
     success :   function(response){
+        console.log(response);
         //_params.since_id = response.max_id;
         //_params.page   = (parseInt(_params.page) + 1);
         if(response.error === void 0){
@@ -55,19 +57,28 @@ function getTweet(_params){
             }else{
                 // console.log('Do Nothing');
             }
-/** auto upload false
-            setTimeout(function(){
-                return getTweet(_params);
-            },(60*1000));
-**/
         }else{
-            if (response.error.match(/limited/g)) {
+            if (response.error.match(/limit/g)) {
                 alert("Twitterの検索API使い過ぎだって\n叱られてしまったお...\n_(:3 ∠ )_\nこの曲が終わるくらいには回復してるかも");
             }
         }
     },
     error   :   function(err){
         console.log(err);
+    },
+  });
+}
+
+function getFavs(){
+  $.ajax({
+    type : 'POST',
+    url  : 'http://otiai10.com:4000/getFavs',
+    success : function(res){
+      console.log(res);
+    },
+    err : function(err){
+      alert('err');
+      console.log(err);
     },
   });
 }
@@ -296,6 +307,10 @@ function switchBackgroundImage(vocalo){
             _params.q += 'IA';
             target_name = 'IAさん';
             break;
+        case 'everyone_faved':
+            _params.q = 'everyone_faved';
+            target_name = 'everyone_faved';
+            break;
         default:
             _params.q += '初音ミク';
     }
@@ -309,7 +324,13 @@ function switchBackgroundImage(vocalo){
     $("ul#twitter_results").append(getSearchTemplate(data));
     pageScroll('index-1');
     showLaoding();
-    getTweet(_params);
+    if(_params.q == 'everyone_faved'){
+        //getFavs();
+        // for dev
+        window.location.herf = '/';
+    }else{
+        getTweet(_params);
+    }
 }
 
 function switchBlackImage(obj, vocalo){
