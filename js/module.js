@@ -415,6 +415,12 @@ function getSerifOfVocalo(vocalo){
             //serif = 'IAと申します';
             serif = 'IA';
             break;
+        case 'pl':
+            serif = "your favs";
+            break;
+        case 'everyone_faved':
+            serif = "everyone's\nfavs";
+            break;
         default:
             serif = 'SELECT ME!';
    }
