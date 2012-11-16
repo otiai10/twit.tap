@@ -276,7 +276,7 @@ function getURLQuery(){
 }
 
 function switchBackgroundImage(vocalo){
-    src = './src/vocaloids/' + vocalo + '.png';
+    src = './src/vocaloids/' + vocalo + '-bg.png';
     $('body').css({
        backgroundImage : 'url(' + src + ')',
     });
