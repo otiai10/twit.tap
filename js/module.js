@@ -308,6 +308,8 @@ function switchBackgroundImage(vocalo){
             target_name = 'IAさん';
             break;
         case 'everyone_faved':
+            // とりあえず
+            window.location.href = '/';
             _params.q = 'everyone_faved';
             target_name = 'everyone_faved';
             break;
