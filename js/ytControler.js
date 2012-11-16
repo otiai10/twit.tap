@@ -95,7 +95,7 @@ function changeTabTitle(){
         // do nothing
     }else{
         var name = __entry_list[__index].from_user;
-        $('title').html(name +' -- EarphoneShare');
+        $('title').html(name +' - EarphoneShare');
     }
 }
 

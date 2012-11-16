@@ -28,60 +28,6 @@ var __index = -1;
 var __buffer_twitter = [];
 var __buffer_youtube = [];
 /**************************************/
-/***** Const for communicate bot ******/
-var FAV_FAILED    = 0;
-var FAV_SUCCEEDED = 1;
-var FAV_RETWEETED = 2;
-var FAV_MENTIONED = 3;
-/**************************************/
-
-function getTweet(_params){
-  $.ajax({
-    type    :   'GET',
-    url     :   _twitter_url,
-    data    :   _params,
-    dataType:   'jsonp',
-    success :   function(response){
-        console.log(response);
-        //_params.since_id = response.max_id;
-        //_params.page   = (parseInt(_params.page) + 1);
-        if(response.error === void 0){
-            if(response.results.length !== 0){
-                __buffer_twitter = response.results;
-                for(i=0;i<response.results.length;i++){
-
-                    end_flag = (i == (response.results.length - 1)) ? true : false;
-                    searchYoutube(__buffer_twitter[i],i,end_flag);
-
-                }
-            }else{
-                // console.log('Do Nothing');
-            }
-        }else{
-            if (response.error.match(/limit/g)) {
-                alert("Twitterの検索API使い過ぎだって\n叱られてしまったお...\n_(:3 ∠ )_\nこの曲が終わるくらいには回復してるかも");
-            }
-        }
-    },
-    error   :   function(err){
-        console.log(err);
-    },
-  });
-}
-
-function getFavs(){
-  $.ajax({
-    type : 'POST',
-    url  : 'http://otiai10.com:4000/getFavs',
-    success : function(res){
-      console.log(res);
-    },
-    err : function(err){
-      alert('err');
-      console.log(err);
-    },
-  });
-}
 
 function init(){
   getURLQuery();
@@ -98,51 +44,12 @@ function init(){
   getTweet(_params);
 }
 
-function searchYoutube(entry, key_in_buffer, end_flag){
-  query = cleanText(entry.text);
-  query = urlComponent(query);
-  _youtube_params.q = query;
-  // to improve query logic
-  __buffer_twitter[key_in_buffer].youtube_query = query;
-  $.ajax({
-    type    :   'GET',
-    url     :   _youtube_url,
-    data    :   _youtube_params,
-    dataType:   'jsonp',
-    success :   function(response){
-      if(response.feed.entry !== void 0){
-        // youtubeの検索結果があった
-        for(i=0; i<response.feed.entry.length; i++){
-            if(response.feed.entry[i].category[1].term === 'Music' && response.feed.entry[i].media$group.yt$duration.seconds < 480){
-                // これはいい感じのyoutubeなので、プレイリストに入れる
-                pushGoodVideo(response.feed.entry[i], key_in_buffer);
-                // いい感じのyotubeだったので、これ以上youtube検索結果は見ない
-                break;
-            }else{
-                // いい感じのyoutubeじゃなかったので、次のyoutubeを見る
-                continue;
-            }
-        }
-      }else{
-        // そもそもyoutubeの検索結果が無かった
-      }
-      // これがtweet検索結果的に最後のエントリなのであれば、showResultしちゃう
-      if(end_flag == true){
-          showResult();
-      }
-    },
-    error   :   function(err){
-        console.log(err);
-    },
-  });
-}
-
-function showResult(){
+function showResult(isFav){
     // remove loader
     __entry_list = filterEntryByKeywords(__entry_list);
     $("li#loader_wrapper").fadeOut(1000,function(){
         // drawList
-        drawList(__entry_list);
+        drawList(__entry_list, isFav);
         $('ul#twitter_results').append(getLoadMoreArea({}));
     });
 }
@@ -154,24 +61,40 @@ function pushGoodVideo(entry, key_in_buffer){
     __entry_list.push(__buffer_twitter[key_in_buffer]);
 }
 
-function drawList(list){
+function drawList(list, isFav){
     for(var i in list){
         li = document.createElement('li');
         $(li).addClass('entry').addClass('boxy').addClass('results');
         //$(document.createElement('div')).html(list[i].youtube_title).appendTo($(li));
         $(li).appendTo('ul#twitter_results');
-        params = {
-            user_icon   : list[i].profile_image_url,
-            text        : list[i].text,
-            uniquelink  : getUniqueLink(list[i].from_user,list[i].id_str),
-            ctime       : getTimeStr(list[i].created_at),
-            userlink    : getUserLink(list[i].from_user),
-            user_name   : list[i].from_user,
-            id_str      : list[i].id_str,
-            pl_index    : i,
-            yt_hash     : list[i].youtube_hash,
-            yt_title    : list[i].youtube_title,
-            yt_query    : list[i].youtube_query,
+        if(isFav){ //getFavs経由のエントリは構造が違う
+            params = {
+                user_icon   : list[i].user.profile_image_url,
+                text        : list[i].text,
+                uniquelink  : getUniqueLink(list[i].from_user,list[i].id_str),
+                ctime       : getTimeStr(list[i].created_at),
+                userlink    : getUserLink(list[i].from_user),
+                user_name   : list[i].user.screen_name,
+                id_str      : list[i].id_str,
+                pl_index    : i,
+                yt_hash     : list[i].youtube_hash,
+                yt_title    : list[i].youtube_title,
+                yt_query    : list[i].youtube_query,
+            };
+        }else{
+            params = {
+                user_icon   : list[i].profile_image_url,
+                text        : list[i].text,
+                uniquelink  : getUniqueLink(list[i].from_user,list[i].id_str),
+                ctime       : getTimeStr(list[i].created_at),
+                userlink    : getUserLink(list[i].from_user),
+                user_name   : list[i].from_user,
+                id_str      : list[i].id_str,
+                pl_index    : i,
+                yt_hash     : list[i].youtube_hash,
+                yt_title    : list[i].youtube_title,
+                yt_query    : list[i].youtube_query,
+            };
         }
         $(li).append(getListContent(params));
     }
@@ -266,13 +189,6 @@ function checkBrowser(){
 
 function getURLQuery(){
     query = window.location.search.substring(1);
-/**
-    if(query.match(/^q=/)){
-        console.log(decodeURIComponent(query.replace(/^q=/,'')));
-    }
-**/
-    //console.log(decodeURIComponent(query));
-    //TODO: GET値を反映させるなら、tweetボタンのURLは「現在のウェブページのURL」では不適
 }
 
 function switchBackgroundImage(vocalo){
@@ -308,10 +224,8 @@ function switchBackgroundImage(vocalo){
             target_name = 'IAさん';
             break;
         case 'everyone_faved':
-            // とりあえず
-            window.location.href = '/';
             _params.q = 'everyone_faved';
-            target_name = 'everyone_faved';
+            target_name = 'みんなのFav';
             break;
         default:
             _params.q += '初音ミク';
@@ -323,13 +237,11 @@ function switchBackgroundImage(vocalo){
         'target' : target_name,
         'now'    : getTimeStr(),
     };
-    $("ul#twitter_results").append(getSearchTemplate(data));
+    $("ul#twitter_results").append(getSearchTemplate(data, _params.q));
     pageScroll('index-1');
     showLaoding();
     if(_params.q == 'everyone_faved'){
-        //getFavs();
-        // for dev
-        window.location.herf = '/';
+        getFavs();
     }else{
         getTweet(_params);
     }
@@ -452,45 +364,6 @@ function changeTabTitle(str){
     $('title').html(' ' + str + '@twit.tap');
 }
 
-function botFavorite(jqObj){
-    removeInitial(jqObj);
-    showGuruguru(jqObj);
-    id_str = jqObj.attr('twitter-data');
-    name   = jqObj.attr('twitter-user');
-    $.ajax({
-        type : 'POST',
-        url  : 'http://twittap.com:4000/fav',
-        data : 'id=' + id_str + '&name=' + name,
-        success : function(res){
-          setTimeout(function(){
-            $('img.tmp').fadeOut(100,function(){
-              $('img.tmp').remove();
-              //サーバからステータス受け取って、それに沿ってDOM操作する
-              if(res.state == FAV_SUCCEEDED){
-                feedbackFav(jqObj);
-              }else if(res.state == FAV_RETWEETED){
-                feedbackRt(jqObj);
-                alert('すでにfavられてるので、Retweetしときました');
-              /**
-              }else if(res.state == FAV_MENTIONED){
-                alert('すでに2回もfavられてるんで、mentionしときました');
-              **/
-              }else{ // == FAV_FAILED
-                recoverInitial(jqObj);
-                alert("今ちょっとbotは寝てるようです_(:3 ∠ )_\n自分でfavってください");
-              }
-            });
-          },900);
-        },
-        error : function(err){
-          setTimeout(function(){
-            $('img.tmp').remove();
-            recoverInitial(jqObj);
-            alert("今ちょっとbotは寝てるようです_(:3 ∠ )_\n自分でfavってください");
-          },900);
-        }
-    });
-}
 function removeInitial(jqObj){
     jqObj
     .removeClass('dynamic')
@@ -501,7 +374,7 @@ function recoverInitial(jqObj){
     jqObj
     .addClass('dynamic')
     .removeClass('fav_state')
-    .append('<span class="initial">botにfavらせる</span>');
+    .html('<span class="initial">botにfavらせる</span>');
 }
 function showGuruguru(jqObj){
     $('<img src="src/loading.png" class="guruguru alpha tmp">').appendTo(jqObj);
@@ -515,4 +388,18 @@ function feedbackRt(jqObj){
     $('<img src="src/rt.png" class="rt">').appendTo(jqObj)
     .hide()
     .fadeIn(100);
+}
+
+function proc_ConvertTweetsToYoutube(resource, isFav){
+    //_params.since_id = resource.max_id;
+    //_params.page   = (parseInt(_params.page) + 1);
+    if(resource.length !== 0){
+        __buffer_twitter = resource;
+        for(i=0;i<resource.length;i++){
+            end_flag = (i == (resource.length - 1)) ? true : false;
+            searchYoutube(__buffer_twitter[i],i,end_flag, isFav);
+        }
+    }else{
+        // console.log('Do Nothing');
+    }
 }

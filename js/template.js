@@ -73,15 +73,25 @@ function getLoadMoreArea(data){
     return template;
 }
 
-function getSearchTemplate(target){
-    var template = ''
-+'            <li class="entry fixed_list search" id="index-1">'
-+'              <div>'
-+'               <span id="rtime"><span id="time_detail">{%now%}</span>なう</span><br>'
-+'               <span>今みんなが聞いてる<span id="target">{%target%}曲</span>とか</span>'
-+'              </div>'
-+'            </li>';
-
+function getSearchTemplate(target, q){
+    var template = '';
+    if(q == 'everone_faved'){
+        template = ''
+        +'            <li class="entry fixed_list search" id="index-1">'
+        +'              <div>'
+        +'               <span id="rtime"><span id="time_detail">{%now%}</span>なう</span><br>'
+        +'               <span>今みんなが聞いてる<span id="target">{%target%}曲</span>とか</span>'
+        +'              </div>'
+        +'            </li>';
+    }else{
+        template = ''
+        +'            <li class="entry fixed_list search" id="index-1">'
+        +'              <div>'
+        +'               <span id="rtime"><span id="time_detail">{%now%}</span>なう</span><br>'
+        +'               <span>今までみんながFavった曲とか</span>'
+        +'              </div>'
+        +'            </li>';
+    }
     for(var i in data){
         template = template.split('{%'+i+'%}').join(data[i]);
     }
