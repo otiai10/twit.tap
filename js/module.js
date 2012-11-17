@@ -46,7 +46,7 @@ function init(){
 
 function showResult(isFav){
     // remove loader
-    __entry_list = filterEntryByKeywords(__entry_list);
+    __entry_list = filterEntry(__entry_list);
     $("li#loader_wrapper").fadeOut(1000,function(){
         // drawList
         drawList(__entry_list, isFav);
@@ -269,9 +269,16 @@ function shareThisVideo(){
     window.open('https://twitter.com/intent/tweet?lang=en&hashtags=nowplaying&text=' + text ,"",option);
 }
 
-function filterEntryByKeywords(list){
-    purified_list = [];
+function filterEntry(list){
+    // ホワイトリストキーワードが入ってるものしか受け付けない
+    // 同じハッシュがかぶったら受け付けない
+    var hash_pool     = ['']; 
+    var purified_list =   [];
     for(var i in list){
+        // ハッシュプールに問い合わせる
+        if(isInHashPool(list[i].youtube_hash, hash_pool)){
+            continue; // ハッシュプールに既にあるので除外
+        }
         // ブラックリスト
         if(true){
         }else{
@@ -282,8 +289,18 @@ function filterEntryByKeywords(list){
         }else{
             continue; // キーワードが入ってないので除外
         }
+        // 最終的に採用なので、ハッシュプールに登録する
+        hash_pool.push(list[i].youtube_hash);
     }
     return purified_list;
+}
+function isInHashPool(hash, pool){
+    for(var i in pool){
+        if(hash == pool[i]){
+            return true;
+        }
+    }
+    return false;
 }
 
 function showDescription(obj, vocalo, e){
@@ -412,3 +429,5 @@ function openSoundHook(jqObj){
         alert("SoundHookは、お茶目な作業用BGMメーカーです。是非どうぞ!\nhttp://soundhook.net/");
     }
 }
+
+
