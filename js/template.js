@@ -75,7 +75,7 @@ function getLoadMoreArea(data){
 
 function getSearchTemplate(target, q){
     var template = '';
-    if(q == 'everone_faved'){
+    if(q !== 'everone_faved'){
         template = ''
         +'            <li class="entry fixed_list search" id="index-1">'
         +'              <div>'
