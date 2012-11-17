@@ -60,4 +60,12 @@ $(function(){ // jQuery document.ready
     $('span.soundhook').live('click',function(){
         openSoundHook($(this));
     });
+
+    $('img#description_icon').on('click',function(){
+        alert("EarphoneShare（イヤホンシェア）のせつめい\n( `・ω・´) -3");
+        alert("はじめに：\n聞き流し系ボカロ曲エクスプローラーです");
+        alert("しくみ：\n初音ミクなど、ボカロの名前込みでツイートしてる#nowplayingをかき集めてきて、\nそれっぽいyoutubeを流したりしてます");
+        alert("おきにいり：\nいいかなーと思ったら、favらせましょう。\nbotが代理でfavるのでコミュ障のあなたでも安心！");
+        alert("それでは；\n思う存分お聞き流しくだしあ！");
+    });
 }); // END jQuery document.ready

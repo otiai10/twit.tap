@@ -332,3 +332,8 @@ div#sh:hover {
 div.shareBlock {
     float:right;
 }
+
+img#description_icon {
+    width:20px;
+    cursor:pointer;
+}
