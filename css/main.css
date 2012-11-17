@@ -305,3 +305,30 @@ li.fixed_list>img {
     cursor:pointer;
 }
 
+span.soundhook {
+    display: -webkit-box;
+    color:#fff;
+    font-weight: bold;
+    font-size: 8px;
+    padding-left:5px;
+    padding-top: 3px;
+    text-shadow: 0px 0px 1px #fff;
+}
+
+div#tw, div#fb {
+    width: 17px;
+    height: 17px;
+}
+div#sh {
+    height: 16px;
+    background-color: #000;
+    -webkit-border-radius: 2px;
+    -webkit-opacity: 0.5;
+}
+div#sh:hover {
+    -webkit-opacity: 1;
+    cursor:pointer;
+}
+div.shareBlock {
+    float:right;
+}

@@ -403,3 +403,12 @@ function proc_ConvertTweetsToYoutube(resource, isFav){
         // console.log('Do Nothing');
     }
 }
+
+function openSoundHook(jqObj){
+    var destination = jqObj.attr('hook-url');
+    if(window.confirm("SoundHookにログインしていればマイリストに追加します\n\nこのURLを別ウィンドウで開きますか？\n\n" + decodeURIComponent(destination) )){
+        window.open(destination);
+    }else{
+        alert("SoundHookは、お茶目な作業用BGMメーカーです。是非どうぞ!\nhttp://soundhook.net/");
+    }
+}

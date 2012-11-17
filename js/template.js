@@ -113,3 +113,21 @@ function getFBShareButton(data){
     var template = '<a href="http://www.facebook.com/sharer.php?u='+url+'&amp;t='+title+'" rel="nofollow" target="_blank"><img id="fb_share" class="share" src="src/fb.png"></a>';
     return template;
 }
+
+function getSoundhook(data){
+    var url = 'http://soundhook.net/search?qu=' + encodeURIComponent(data.youtube_title);
+    var template = '<span class="soundhook" hook-url="' + url + '" target="_blank">SoundHook</span>';
+    return template;
+}
+
+function getTwitterShareButton(){
+    return '<img id="twitter_share" class="share" src="src/twitter-t.png">';
+}
+
+function getShareBlock(tw, fb, sh){
+    var template = ''
+    + '<div class="shareBlock boxy">'
+    +   '<div id="tw">' + tw + '</div><div id="fb">' + fb + '</div><div id="sh">' + sh + '</div>'
+    + '</div>';
+    return template;
+}

@@ -71,10 +71,13 @@ function scrolling(){
 }
 
 function showNowPlaying(){
+    twitter = getTwitterShareButton();
     img_fb = getFBShareButton(__entry_list[__index]);
+    soundhook = getSoundhook(__entry_list[__index]);
+    shareBlock = getShareBlock(twitter, img_fb, soundhook);
     $("div#music_title>span")
     .fadeOut(300,function(){
-        $(this).html(__entry_list[__index].youtube_title + '   <img id="twitter_share" class="share" src="src/twitter-t.png">  ' + img_fb)
+        $(this).html(__entry_list[__index].youtube_title + ' ' + shareBlock)
         .hide().fadeIn(300);
     });
 }

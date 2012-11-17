@@ -56,4 +56,8 @@ $(function(){ // jQuery document.ready
     $("a.bot_fav").live('click',function(){
         botFavorite($(this));
     });
+
+    $('span.soundhook').live('click',function(){
+        openSoundHook($(this));
+    });
 }); // END jQuery document.ready
