@@ -86,8 +86,12 @@ function changeFavicon(){
     if(__index < 0){
         // do nothing
     }else{
+        var href = __entry_list[__index].profile_image_url;
+        if(!href){
+            href = __entry_list[__index].user.profile_image_url;
+        }
         $('link#favicon').attr({
-            'href' : __entry_list[__index].profile_image_url,
+            'href' : href,
             'rel'  : 'shorcut icon',
         });
     }
@@ -98,6 +102,9 @@ function changeTabTitle(){
         // do nothing
     }else{
         var name = __entry_list[__index].from_user;
+        if (!name) {
+            name = __entry_list[__index].user.screen_name;
+        }
         $('title').html(name +' - EarphoneShare');
     }
 }
