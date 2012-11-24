@@ -16,7 +16,8 @@ function playByIndex(){
         $('div.playing_status').removeClass('active');
         $('#index' + __index).addClass('active');
         showNowPlaying();
-        changeFavicon();
+        // やらない
+        //changeFavicon();
         changeTabTitle();
     });
     scrolling();
@@ -25,6 +26,8 @@ function playByIndex(){
 function onYouTubePlayerReady(playerid){
   document.getElementById(playerid)
   .addEventListener('onStateChange','statusWatch');
+  document.getElementById(playerid)
+  .addEventListener('onError','playNext');
 }
 
 function statusWatch(newState){
@@ -82,6 +85,7 @@ function showNowPlaying(){
     });
 }
 
+// やらない
 function changeFavicon(){
     if(__index < 0){
         // do nothing
