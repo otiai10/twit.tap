@@ -423,7 +423,8 @@ function proc_ConvertTweetsToYoutube(resource, isFav){
 
 function openSoundHook(jqObj){
     var destination = jqObj.attr('hook-url');
-    if(window.confirm("SoundHookにログインしていればマイリストに追加します\n\nこのURLを別ウィンドウで開きますか？\n\n" + decodeURIComponent(destination) )){
+    var title       = jqObj.attr('hook-title');
+    if(window.confirm("SoundHookにログインしていればマイリストに追加します\n\nこのURLを別ウィンドウで開きますか？\n\n" + title + "\n" + decodeURIComponent(destination) )){
         window.open(destination);
     }else{
         alert("SoundHookは、お茶目な作業用BGMメーカーです。是非どうぞ!\nhttp://soundhook.net/");
