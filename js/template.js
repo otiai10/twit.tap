@@ -116,7 +116,7 @@ function getFBShareButton(data){
 
 function getSoundhook(data){
     console.log(data);
-    var url = 'http://soundhook.net/search?qu=' + encodeURIComponent(data.youtube_hash);
+    var url = 'http://soundhook.net/search?qu=' + encodeURIComponent(data.youtube_hash) + '&from=earphoneshare';
     var template = '<span class="soundhook" hook-title="' + data.youtube_title + '" hook-url="' + url + '" target="_blank">SoundHook</span>';
     return template;
 }
