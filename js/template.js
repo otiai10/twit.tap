@@ -115,8 +115,9 @@ function getFBShareButton(data){
 }
 
 function getSoundhook(data){
-    var url = 'http://soundhook.net/search?qu=' + encodeURIComponent(data.youtube_title);
-    var template = '<span class="soundhook" hook-url="' + url + '" target="_blank">SoundHook</span>';
+    console.log(data);
+    var url = 'http://soundhook.net/search?qu=' + encodeURIComponent(data.youtube_hash);
+    var template = '<span class="soundhook" hook-title="' + data.youtube_title + '" hook-url="' + url + '" target="_blank">SoundHook</span>';
     return template;
 }
 
