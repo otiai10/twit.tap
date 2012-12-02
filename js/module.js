@@ -359,10 +359,14 @@ function getSerifOfVocalo(vocalo){
 function getInitialHashAndTitle(){
     var initialHashes = [
         { hash:'MGt25mv4-2Q',title:                                              "Tell Your World"},
-        { hash:'7jd3D_LA1uI',title:     "【初音ミク】恋なんか知らない（恋愛感染症#1）【オリジナル"},
         { hash:'fJJqyrzXgeI',title:                "初音ミクオリジナル曲 「Breath of mechanical」"},
         { hash:'UwrKHOHIzoU',title:"VOCALOID2: Hatsune Miku Append - Fallin' Fallin' Fallin' [HD]"},
-        { hash:'JB3rtmoUY_U',title:    "【初音ミクAppend】ココロカラ -Sweet mix-【with 中文字幕】"}
+        { hash:'JB3rtmoUY_U',title:    "【初音ミクAppend】ココロカラ -Sweet mix-【with 中文字幕】"},
+        { hash:'DeWlWsTQyow',title:                  "Hatsune Miku soft - Greet PV (English Subs)"},
+        { hash:'WPHwJr7VeGo',title:                  "RE:MIKUS 01. ファインダー（kzs DSLR remix）"},
+        { hash:'2IYmqhkiojM',title:                   "【初音ミク】 思慮するゾンビ 【オリジナル】"},
+        { hash:'5iRzpYBoXzs',title:                         "【GUMI】 マーメイド 【オリジナルPV】"},
+        { hash:'l62uUZqz0Z8',title:                                               "ストロボナイツ"}
     ];
     var i = Math.floor(Math.random() * initialHashes.length);
     showInitialHash(initialHashes[i].title);
@@ -424,7 +428,7 @@ function proc_ConvertTweetsToYoutube(resource, isFav){
 function openSoundHook(jqObj){
     var destination = jqObj.attr('hook-url');
     var title       = jqObj.attr('hook-title');
-    if(window.confirm("SoundHookにログインしていればマイリストに追加します\n\nこのURLを別ウィンドウで開きますか？\n\n" + title + "\n" + decodeURIComponent(destination) )){
+    if(window.confirm("SoundHookにログインしていればマイリストに追加します\n\nこのURLを別ウィンドウで開きますか？\n\n" + title + "\n\n" + decodeURIComponent(destination) )){
         window.open(destination);
     }else{
         alert("SoundHookは、お茶目な作業用BGMメーカーです。是非どうぞ!\nhttp://soundhook.net/");
