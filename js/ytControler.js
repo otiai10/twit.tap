@@ -109,7 +109,7 @@ function changeTabTitle(){
         if (!name) {
             name = __entry_list[__index].user.screen_name;
         }
-        $('title').html(name +' - EarphoneShare');
+        $('title').html(name +' × EarphoneShare');
     }
 }
 
