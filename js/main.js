@@ -54,7 +54,8 @@ $(function(){ // jQuery document.ready
     });
 
     $("a.bot_fav").live('click',function(){
-        botFavorite($(this));
+        //botFavorite($(this));
+        botRetweet($(this));
     });
 
     $('span.soundhook').live('click',function(){

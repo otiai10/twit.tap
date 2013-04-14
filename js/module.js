@@ -404,11 +404,13 @@ function feedbackFav(jqObj){
     $('<img src="src/fav.png" class="fav">').appendTo(jqObj)
     .hide()
     .fadeIn(100);
+    $("a.bot_fav").die('click');
 }
 function feedbackRt(jqObj){
     $('<img src="src/rt.png" class="rt">').appendTo(jqObj)
     .hide()
     .fadeIn(100);
+    $("a.bot_fav").die('click');
 }
 
 function proc_ConvertTweetsToYoutube(resource, isFav){

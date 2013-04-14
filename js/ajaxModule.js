@@ -88,39 +88,29 @@ function searchYoutube(entry, key_in_buffer, end_flag, isFav){
   });
 }
 
-function botFavorite(jqObj){
+// REMOVE: function botFavorite(jqObj){
+function botRetweet(jqObj){
     removeInitial(jqObj);
     showGuruguru(jqObj);
     id_str = jqObj.attr('twitter-data');
     name   = jqObj.attr('twitter-user');
     $.ajax({
         type : 'POST',
-        url  : 'http://twittap.com:4000/fav',
+        //url  : 'http://twittap.com:4000/fav',
+        url  : 'http://twittap.com:4000/retweet',
         data : 'id=' + id_str + '&name=' + name,
         success : function(res){
           setTimeout(function(){
             $('img.tmp').fadeOut(100,function(){
               $('img.tmp').remove();
-              //サーバからステータス受け取って、それに沿ってDOM操作する
-              if(res.state == FAV_SUCCEEDED){
-                feedbackFav(jqObj);
-              }else if(res.state == FAV_RETWEETED){
-                feedbackRt(jqObj);
-                alert('すでにfavられてるので、Retweetしときました');
-              }else if(res.state == FAV_MENTIONED){
-                alert('すでに2回もfavられてるんで、自分でfavってくだしあ');
-              }else{ // == FAV_FAILED
-                recoverInitial(jqObj);
-                alert("今ちょっとbotは寝てるようです_(:3 ∠ )_\n自分でfavってください");
-              }
+              feedbackRt(jqObj);
             });
           },900);
         },
         error : function(err){
           setTimeout(function(){
             $('img.tmp').remove();
-            recoverInitial(jqObj);
-            alert("今ちょっとbotは寝てるようです_(:3 ∠ )_\n自分でfavってください");
+            feedbackRt(jqObj);
           },900);
         }
     });
