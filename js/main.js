@@ -55,6 +55,7 @@ $(function(){ // jQuery document.ready
 
     $("a.bot_fav").live('click',function(){
         //botFavorite($(this));
+        $(this).die('click');
         botRetweet($(this));
     });
 
