@@ -3,8 +3,8 @@
 **/
 
 /****** twitter API const *****/
-var _twitter_url  = 'http://search.twitter.com/search.json';
-var _bot_favs_url = 'http://api.twitter.com/1/favorites.json?count=5&screen_name=twit_tap';
+var _twitter_url  = 'http://api.twitter.com/1.1/search/tweets.json';
+var _bot_favs_url = 'http://api.twitter.com/1.1/favorites.json?count=5&screen_name=twit_tap';
 var _params = {
   page  :             1,
   q     : '#nowplaying',
